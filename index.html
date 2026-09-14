@@ -28,59 +28,9 @@
     --shadow: 0 1px 2px rgba(36,31,28,0.05), 0 10px 28px -14px rgba(36,31,28,0.22);
     --radius: 14px;
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --paper:#1B1613;
-      --surface:#241E19;
-      --surface-2:#211B16;
-      --ink:#F3ECDD;
-      --ink-soft:#BBAC93;
-      --line:#3C2F23;
-      --line-soft:#2A2119;
-
-      --rosso-brand:#FF6B70;
-      --rosso:#FF8489;
-      --rosso-tint:#3A1E1F;
-      --on-rosso:#241F1C;
-
-      --verde-brand:#7FDB93;
-      --verde:#8FE0A0;
-      --verde-tint:#17301F;
-
-      --menta-brand:#9FE3D8;
-      --menta:#9FE3D8;
-      --menta-tint:#173330;
-
-      --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 28px -14px rgba(0,0,0,0.55);
-    }
-  }
-  :root[data-theme="dark"]{
-    --paper:#1B1613;
-    --surface:#241E19;
-    --surface-2:#211B16;
-    --ink:#F3ECDD;
-    --ink-soft:#BBAC93;
-    --line:#3C2F23;
-    --line-soft:#2A2119;
-
-    --rosso-brand:#FF6B70;
-    --rosso:#FF8489;
-    --rosso-tint:#3A1E1F;
-    --on-rosso:#241F1C;
-
-    --verde-brand:#7FDB93;
-    --verde:#8FE0A0;
-    --verde-tint:#17301F;
-
-    --menta-brand:#9FE3D8;
-    --menta:#9FE3D8;
-    --menta-tint:#173330;
-
-    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 28px -14px rgba(0,0,0,0.55);
-  }
 
   *{box-sizing:border-box;}
-  html{color-scheme:light dark;}
+  html{color-scheme:light;}
   body{
     margin:0;
     background:var(--paper);
@@ -112,16 +62,7 @@
   .tricolore span:nth-child(3){background:var(--rosso-brand);}
   .tricolore.center{margin:0;}
 
-  /* ---------- theme-swapped assets (dark-ink logo vs white logo) ---------- */
-  .if-dark{display:none;}
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]) .if-light{display:none;}
-    :root:not([data-theme="light"]) .if-dark{display:block;}
-  }
-  :root[data-theme="dark"] .if-light{display:none;}
-  :root[data-theme="dark"] .if-dark{display:block;}
-
-  /* ---------- top bar (fixed light chrome, so the dark-ink mark always reads) ---------- */
+  /* ---------- top bar ---------- */
   .topbar{
     position:sticky; top:0; z-index:10;
     background:rgba(250,246,236,0.92);
@@ -258,6 +199,23 @@
   .highlight-strip b{color:var(--ink); font-weight:600;}
   .order-links{display:flex; gap:10px; margin-top:22px; flex-wrap:wrap;}
 
+  /* ---------- gallery ---------- */
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:130px; gap:12px;
+  }
+  .gallery-grid a{
+    border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line);
+    display:block; position:relative;
+  }
+  .gallery-grid img{width:100%; height:100%; object-fit:cover; transition:transform .35s ease;}
+  .gallery-grid a:hover img{transform:scale(1.05);}
+  .gallery-grid a.g-big{grid-column:span 2; grid-row:span 2;}
+  @media (max-width:640px){
+    .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:120px;}
+    .gallery-grid a.g-big{grid-column:span 2; grid-row:span 2;}
+  }
+  .gallery-note{margin-top:16px; font-size:12.5px; color:var(--ink-soft);}
+
   /* ---------- find us ---------- */
   .findus{display:grid; grid-template-columns:1fr 1.05fr; gap:44px;}
   @media (max-width:760px){ .findus{grid-template-columns:1fr;} }
@@ -327,6 +285,7 @@
     <nav>
       <a href="#story">Our story</a>
       <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
       <a href="#find-us">Find us</a>
       <a href="#press">Press</a>
     </nav>
@@ -339,8 +298,7 @@
 
 <header class="hero wrap">
   <p class="eyebrow"><span class="dot"></span>Guildhall Street · Preston City Centre</p>
-  <img class="hero-logo if-light" src="assets/logo-principale.svg" alt="Ragù Italian Bistro — Naples on a plate">
-  <img class="hero-logo if-dark" src="assets/logo-negativo-bianco.svg" alt="Ragù Italian Bistro — Naples on a plate">
+  <img class="hero-logo" src="assets/logo-principale.svg" alt="Ragù Italian Bistro — Naples on a plate">
   <h1>Real Neapolitan cooking, in the <b>heart of Preston</b>.</h1>
   <p class="tagline-pill"><span class="tricolore"><span></span><span></span><span></span></span> Consistency. Quality. Community.</p>
   <p class="lede">Ragù is run by two Neapolitans, chef Luca Scognamiglio and Vincenzo Gaglione — the food they grew up on, cooked the way it's meant to be, five minutes from the Flag Market.</p>
@@ -441,6 +399,34 @@
     <div class="order-links">
       <a class="btn btn-outline" href="https://www.ubereats.com/gb/store/ragu-italian-bistro/60AgVN0EWVyKOatBZUCGuQ" target="_blank" rel="noopener">Order delivery on Uber Eats</a>
     </div>
+  </section>
+
+  <div class="wrap"><div class="tricolore"><span></span><span></span><span></span></div></div>
+
+  <section id="gallery" class="wrap">
+    <div class="section-head">
+      <p class="eyebrow"><span class="dot"></span>Gallery</p>
+      <h2>Straight from the pass, straight from Guildhall Street.</h2>
+      <p>A few plates and moments from the dining room — the same food you'll find on the menu above.</p>
+    </div>
+    <div class="gallery-grid">
+      <a class="g-big" href="assets/gallery/foto2.jpg" target="_blank" rel="noopener">
+        <img src="assets/gallery/foto2.jpg" alt="Baked pasta with melted cheese and basil at Ragù Italian Bistro">
+      </a>
+      <a href="assets/gallery/foto3.jpg" target="_blank" rel="noopener">
+        <img src="assets/gallery/foto3.jpg" alt="Spaghetti bolognese with fresh parsley">
+      </a>
+      <a href="assets/gallery/foto4.jpg" target="_blank" rel="noopener">
+        <img src="assets/gallery/foto4.jpg" alt="Penne with prawns, broccoli and cherry tomatoes">
+      </a>
+      <a href="assets/gallery/foto5.jpg" target="_blank" rel="noopener">
+        <img src="assets/gallery/foto5.jpg" alt="Breaded cutlet with spaghetti pomodoro">
+      </a>
+      <a href="assets/gallery/foto1.jpg" target="_blank" rel="noopener">
+        <img src="assets/gallery/foto1.jpg" alt="Sangria on the terrace at Ragù Italian Bistro">
+      </a>
+    </div>
+    <p class="gallery-note">More on Instagram <a href="https://www.instagram.com/ragu.italianbistro/" target="_blank" rel="noopener" style="color:var(--rosso); font-weight:600; text-decoration:none;">@ragu.italianbistro</a></p>
   </section>
 
   <div class="wrap"><div class="tricolore"><span></span><span></span><span></span></div></div>
