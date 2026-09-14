@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ragù Italian Bistro — authentic Neapolitan cooking at 5–7 Guildhall Street, Preston. Real Italian food, made by two Neapolitans.">
 <title>Ragù Italian Bistro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,9 +34,35 @@
     --shadow: 0 1px 2px rgba(36,31,28,0.05), 0 10px 28px -14px rgba(36,31,28,0.22);
     --radius: 14px;
   }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#1B1613;
+      --surface:#241E19;
+      --surface-2:#211B16;
+      --ink:#F3ECDD;
+      --ink-soft:#BBAC93;
+      --line:#3C2F23;
+      --line-soft:#2A2119;
+
+      --rosso-brand:#FF6B70;
+      --rosso:#FF8489;
+      --rosso-tint:#3A1E1F;
+      --on-rosso:#241F1C;
+
+      --verde-brand:#7FDB93;
+      --verde:#8FE0A0;
+      --verde-tint:#17301F;
+
+      --menta-brand:#9FE3D8;
+      --menta:#9FE3D8;
+      --menta-tint:#173330;
+
+      --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 28px -14px rgba(0,0,0,0.55);
+    }
+  }
 
   *{box-sizing:border-box;}
-  html{color-scheme:light;}
+  html{color-scheme:light dark;}
   body{
     margin:0;
     background:var(--paper);
@@ -62,7 +94,14 @@
   .tricolore span:nth-child(3){background:var(--rosso-brand);}
   .tricolore.center{margin:0;}
 
-  /* ---------- top bar ---------- */
+  /* ---------- theme-swapped assets (dark-ink logo vs white logo) ---------- */
+  .if-dark{display:none;}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .if-light{display:none;}
+    :root:not([data-theme="light"]) .if-dark{display:block;}
+  }
+
+  /* ---------- top bar (fixed light chrome, so the dark-ink mark always reads) ---------- */
   .topbar{
     position:sticky; top:0; z-index:10;
     background:rgba(250,246,236,0.92);
@@ -92,8 +131,8 @@
   .hero{
     padding-block:clamp(52px,9vw,96px) clamp(40px,6vw,64px);
     background:
-      radial-gradient(60% 55% at 15% 0%, color-mix(in srgb, var(--verde-tint) 70%, transparent), transparent),
-      radial-gradient(55% 50% at 100% 10%, color-mix(in srgb, var(--rosso-tint) 55%, transparent), transparent);
+      radial-gradient(60% 55% at 15% 0%, color-mix(in srgb, var(--verde-tint) 90%, transparent), transparent),
+      radial-gradient(55% 50% at 100% 10%, color-mix(in srgb, var(--rosso-tint) 75%, transparent), transparent);
   }
   .hero-logo{width:min(220px,52vw); height:auto; margin:0 0 28px;}
   .hero h1{
@@ -172,9 +211,11 @@
   .menu-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
   @media (max-width:640px){ .menu-grid{grid-template-columns:1fr;} }
   .menu-card{
-    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--surface); border:1px solid var(--line); border-top:3px solid var(--rosso-brand); border-radius:var(--radius);
     padding:22px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:10px;
   }
+  .menu-card.mc-drink{border-top-color:var(--menta-brand);}
+  .menu-card.mc-kids{border-top-color:var(--verde-brand);}
   .menu-card .mc-top{display:flex; align-items:center; justify-content:space-between; gap:10px;}
   .menu-card h3{font-size:18px; font-weight:600;}
   .mc-tag{
@@ -225,6 +266,8 @@
     width:38px; height:38px; border-radius:10px; background:var(--surface-2); border:1px solid var(--line);
     display:flex; align-items:center; justify-content:center; flex:none; color:var(--rosso);
   }
+  .contact-row .ic.ic-verde{color:var(--verde);}
+  .contact-row .ic.ic-menta{color:var(--menta);}
   .contact-row .ic svg{width:17px; height:17px;}
   .contact-row .ct-label{font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 3px; font-weight:600;}
   .contact-row .ct-value{font-size:15.5px; margin:0;}
@@ -249,7 +292,7 @@
   .press-row{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
   @media (max-width:720px){ .press-row{grid-template-columns:1fr;} }
   .press-card{
-    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--verde-brand); border-radius:var(--radius);
     padding:18px 20px; text-decoration:none; color:var(--ink); box-shadow:var(--shadow);
     display:flex; flex-direction:column; gap:8px;
   }
@@ -278,7 +321,8 @@
     padding-top:22px; font-size:12.5px; color:rgba(250,246,236,0.45);
   }
 </style>
-
+</head>
+<body>
 <div class="topbar">
   <div class="topbar-inner">
     <img src="assets/logo-compatto.svg" alt="Ragù Italian Bistro">
@@ -298,7 +342,8 @@
 
 <header class="hero wrap">
   <p class="eyebrow"><span class="dot"></span>Guildhall Street · Preston City Centre</p>
-  <img class="hero-logo" src="assets/logo-principale.svg" alt="Ragù Italian Bistro — Naples on a plate">
+  <img class="hero-logo if-light" src="assets/logo-principale.svg" alt="Ragù Italian Bistro — Naples on a plate">
+  <img class="hero-logo if-dark" src="assets/logo-negativo-bianco.svg" alt="Ragù Italian Bistro — Naples on a plate">
   <h1>Real Neapolitan cooking, in the <b>heart of Preston</b>.</h1>
   <p class="tagline-pill"><span class="tricolore"><span></span><span></span><span></span></span> Consistency. Quality. Community.</p>
   <p class="lede">Ragù is run by two Neapolitans, chef Luca Scognamiglio and Vincenzo Gaglione — the food they grew up on, cooked the way it's meant to be, five minutes from the Flag Market.</p>
@@ -381,12 +426,12 @@
         <p>A shorter, quicker menu for the middle of the day — in and out without rushing.</p>
         <a class="mc-link" href="assets/menu-lunch.pdf" target="_blank" rel="noopener">View PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
       </article>
-      <article class="menu-card">
+      <article class="menu-card mc-drink">
         <div class="mc-top"><h3>Cocktail</h3><span class="mc-tag drink">Bar</span></div>
         <p>Aperitivo and after-dinner drinks, built to go with the food rather than fight it.</p>
         <a class="mc-link" href="assets/menu-cocktail.pdf" target="_blank" rel="noopener">View PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
       </article>
-      <article class="menu-card">
+      <article class="menu-card mc-kids">
         <div class="mc-top"><h3>Kids</h3><span class="mc-tag kids">For little ones</span></div>
         <p>Smaller plates, familiar flavours — a menu just for the youngest guests at the table.</p>
         <a class="mc-link" href="assets/menu-kids.pdf" target="_blank" rel="noopener">View PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
@@ -446,14 +491,14 @@
           </div>
         </div>
         <div class="contact-row">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span class="ic ic-verde"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
           <div>
             <p class="ct-label">Phone</p>
             <a class="ct-value" href="tel:+447922958745">+44 7922 958745</a>
           </div>
         </div>
         <div class="contact-row">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></span>
+          <span class="ic ic-menta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></span>
           <div>
             <p class="ct-label">Instagram</p>
             <a class="ct-value" href="https://www.instagram.com/ragu.italianbistro/" target="_blank" rel="noopener">@ragu.italianbistro</a>
@@ -583,3 +628,5 @@
   }
 })();
 </script>
+</body>
+</html>
