@@ -3,12 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Ragù Italian Bistro — authentic Neapolitan cooking at 5–7 Guildhall Street, Preston. Real Italian food, made by two Neapolitans.">
 <title>Ragù Italian Bistro</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Baloo+2:wght@600;700&display=swap">
+<meta name="description" content="Ragù Italian Bistro — authentic Neapolitan cooking at 5–7 Guildhall Street, Preston. Real Italian food, made by two Neapolitans.">
+<link rel="icon" type="image/svg+xml" href="assets/logo-compatto.svg">
+
+<meta property="og:type" content="restaurant">
+<meta property="og:site_name" content="Ragù Italian Bistro">
+<meta property="og:title" content="Ragù Italian Bistro — Real Neapolitan cooking in Preston">
+<meta property="og:description" content="Authentic Neapolitan cooking at 5–7 Guildhall Street, Preston. Menus, opening hours, and how to find us.">
+<meta property="og:image" content="https://dashing-dolphin-1b1c28.netlify.app/assets/gallery/foto2.jpg">
+<meta property="og:url" content="https://dashing-dolphin-1b1c28.netlify.app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ragù Italian Bistro — Real Neapolitan cooking in Preston">
+<meta name="twitter:description" content="Authentic Neapolitan cooking at 5–7 Guildhall Street, Preston.">
+<meta name="twitter:image" content="https://dashing-dolphin-1b1c28.netlify.app/assets/gallery/foto2.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Ragù Italian Bistro",
+  "image": "https://dashing-dolphin-1b1c28.netlify.app/assets/gallery/foto2.jpg",
+  "url": "https://dashing-dolphin-1b1c28.netlify.app/",
+  "priceRange": "££",
+  "telephone": "+447922958745",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "5–7 Guildhall Street",
+    "addressLocality": "Preston",
+    "postalCode": "PR1 3NU",
+    "addressCountry": "GB"
+  },
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "12:00", "closes": "20:00"}
+  ],
+  "servesCuisine": "Neapolitan",
+  "sameAs": [
+    "https://www.instagram.com/ragu.italianbistro/",
+    "https://m.me/61586330701725"
+  ]
+}
+</script>
+
 <style>
+  @font-face{
+    font-family:'Poppins'; font-style:normal; font-weight:300; font-display:swap;
+    src: url('assets/fonts/poppins-300.woff2') format('woff2');
+  }
+  @font-face{
+    font-family:'Poppins'; font-style:normal; font-weight:400; font-display:swap;
+    src: url('assets/fonts/poppins-400.woff2') format('woff2');
+  }
+  @font-face{
+    font-family:'Poppins'; font-style:italic; font-weight:400; font-display:swap;
+    src: url('assets/fonts/poppins-400italic.woff2') format('woff2');
+  }
+  @font-face{
+    font-family:'Poppins'; font-style:normal; font-weight:500; font-display:swap;
+    src: url('assets/fonts/poppins-500.woff2') format('woff2');
+  }
+  @font-face{
+    font-family:'Poppins'; font-style:italic; font-weight:500; font-display:swap;
+    src: url('assets/fonts/poppins-500italic.woff2') format('woff2');
+  }
+  @font-face{
+    font-family:'Poppins'; font-style:normal; font-weight:600; font-display:swap;
+    src: url('assets/fonts/poppins-600.woff2') format('woff2');
+  }
+  @font-face{
+    font-family:'Poppins'; font-style:normal; font-weight:700; font-display:swap;
+    src: url('assets/fonts/poppins-700.woff2') format('woff2');
+  }
+  @font-face{
+    font-family:'Poppins'; font-style:normal; font-weight:800; font-display:swap;
+    src: url('assets/fonts/poppins-800.woff2') format('woff2');
+  }
+  @font-face{
+    font-family:'Baloo 2'; font-style:normal; font-weight:600; font-display:swap;
+    src: url('assets/fonts/baloo2-600-700.woff2') format('woff2');
+  }
+  @font-face{
+    font-family:'Baloo 2'; font-style:normal; font-weight:700; font-display:swap;
+    src: url('assets/fonts/baloo2-600-700.woff2') format('woff2');
+  }
+
   :root{
     --paper:#FAF6EC;
     --surface:#FFFFFF;
@@ -320,9 +398,34 @@
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
     padding-top:22px; font-size:12.5px; color:rgba(250,246,236,0.45);
   }
+  .footer-bottom a{color:inherit; text-decoration:underline;}
+  .footer-bottom a:hover{color:rgba(250,246,236,0.8);}
+
+  /* ---------- cookie notice bar ---------- */
+  .cookie-bar{
+    position:fixed; left:0; right:0; bottom:0; z-index:50;
+    background:#1D1712; color:#FAF6EC;
+    border-top:1px solid rgba(250,246,236,0.14);
+    box-shadow:0 -8px 24px -12px rgba(0,0,0,0.4);
+  }
+  .cookie-bar-inner{
+    display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+    padding-block:16px;
+  }
+  .cookie-bar p{
+    margin:0; font-size:13.5px; color:rgba(250,246,236,0.82); flex:1; min-width:220px; line-height:1.5;
+  }
+  .cookie-bar p a{color:#FAF6EC; text-decoration:underline;}
+  .cookie-bar .cookie-ok{flex:none;}
+  @media (max-width:520px){
+    .cookie-bar-inner{flex-direction:column; align-items:stretch;}
+    .cookie-bar .cookie-ok{width:100%; justify-content:center;}
+  }
 </style>
 </head>
 <body>
+
+
 <div class="topbar">
   <div class="topbar-inner">
     <img src="assets/logo-compatto.svg" alt="Ragù Italian Bistro">
@@ -579,10 +682,72 @@
     </div>
     <div class="footer-bottom">
       <span id="footerYear">© 2026 Ragù Italian Bistro, Preston.</span>
+      <a href="privacy.html">Privacy Policy</a>
       <span>Consistency. Quality. Community.</span>
     </div>
   </div>
 </footer>
+
+<div id="cookieBar" class="cookie-bar" role="region" aria-label="Cookie notice" hidden>
+  <div class="cookie-bar-inner wrap">
+    <p>This site uses only technical elements essential to its operation — no analytics or marketing cookies are active right now. <a href="privacy.html">Read our Privacy Policy</a>.</p>
+    <button type="button" id="cookieOk" class="btn btn-primary cookie-ok">Got it</button>
+  </div>
+</div>
+
+<script>
+/* =========================================================================
+   COOKIE / TRACKING CONFIG
+   -------------------------------------------------------------------------
+   ANALYTICS_ENABLED: leave this false until Google Analytics (or any other
+   non-essential tracker) is actually added to the site. Today the site sets
+   no cookies of its own, so a consent banner isn't legally required yet —
+   the bar below is just an honest heads-up with a link to the Privacy
+   Policy, dismissed with a single acknowledgement button.
+
+   WHEN GOOGLE ANALYTICS IS READY TO GO LIVE:
+   1. Set ANALYTICS_ENABLED = true below.
+   2. Replace the single "Got it" button in the #cookieBar markup above with
+      two real buttons — Accept / Reject — wired to
+      grantAnalyticsConsent() / declineAnalyticsConsent() below.
+   3. Load the Google Analytics snippet ONLY from inside
+      grantAnalyticsConsent() (and again on future visits if consent was
+      already stored as "granted") — never load it unconditionally.
+   ========================================================================= */
+var ANALYTICS_ENABLED = false;
+var COOKIE_STORAGE_KEY = 'raguCookieNoticeSeen';
+
+function grantAnalyticsConsent(){
+  try { localStorage.setItem(COOKIE_STORAGE_KEY, 'granted'); } catch (e) {}
+  var bar = document.getElementById('cookieBar');
+  if (bar) bar.hidden = true;
+  // Placeholder for later: inject the Google Analytics <script> tag here
+  // once ANALYTICS_ENABLED is true. Nothing loads today.
+}
+
+function declineAnalyticsConsent(){
+  try { localStorage.setItem(COOKIE_STORAGE_KEY, 'declined'); } catch (e) {}
+  var bar = document.getElementById('cookieBar');
+  if (bar) bar.hidden = true;
+}
+
+(function(){
+  var bar = document.getElementById('cookieBar');
+  var okBtn = document.getElementById('cookieOk');
+  if (!bar || !okBtn) return;
+
+  try {
+    if (!localStorage.getItem(COOKIE_STORAGE_KEY)) bar.hidden = false;
+  } catch (e) {
+    bar.hidden = false;
+  }
+
+  okBtn.addEventListener('click', function(){
+    bar.hidden = true;
+    try { localStorage.setItem(COOKIE_STORAGE_KEY, 'acknowledged'); } catch (e) {}
+  });
+})();
+</script>
 
 <script>
 (function(){
@@ -628,5 +793,6 @@
   }
 })();
 </script>
+
 </body>
 </html>
