@@ -1,0 +1,599 @@
+<title>Ragù Italian Bistro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Baloo+2:wght@600;700&display=swap">
+<style>
+  :root{
+    --paper:#FAF6EC;
+    --surface:#FFFFFF;
+    --surface-2:#FFFCF5;
+    --ink:#241F1C;
+    --ink-soft:#6E6255;
+    --line:#E6DCC5;
+    --line-soft:#F1E9D5;
+
+    --rosso-brand:#EE2739;
+    --rosso:#C81C2E;
+    --rosso-tint:#FBE2E0;
+    --on-rosso:#FFFFFF;
+
+    --verde-brand:#0C9547;
+    --verde:#0B7A3B;
+    --verde-tint:#E1F0DA;
+
+    --menta-brand:#7FCFC4;
+    --menta:#3E8F84;
+    --menta-tint:#E4F5F1;
+
+    --shadow: 0 1px 2px rgba(36,31,28,0.05), 0 10px 28px -14px rgba(36,31,28,0.22);
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#1B1613;
+      --surface:#241E19;
+      --surface-2:#211B16;
+      --ink:#F3ECDD;
+      --ink-soft:#BBAC93;
+      --line:#3C2F23;
+      --line-soft:#2A2119;
+
+      --rosso-brand:#FF6B70;
+      --rosso:#FF8489;
+      --rosso-tint:#3A1E1F;
+      --on-rosso:#241F1C;
+
+      --verde-brand:#7FDB93;
+      --verde:#8FE0A0;
+      --verde-tint:#17301F;
+
+      --menta-brand:#9FE3D8;
+      --menta:#9FE3D8;
+      --menta-tint:#173330;
+
+      --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 28px -14px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#1B1613;
+    --surface:#241E19;
+    --surface-2:#211B16;
+    --ink:#F3ECDD;
+    --ink-soft:#BBAC93;
+    --line:#3C2F23;
+    --line-soft:#2A2119;
+
+    --rosso-brand:#FF6B70;
+    --rosso:#FF8489;
+    --rosso-tint:#3A1E1F;
+    --on-rosso:#241F1C;
+
+    --verde-brand:#7FDB93;
+    --verde:#8FE0A0;
+    --verde-tint:#17301F;
+
+    --menta-brand:#9FE3D8;
+    --menta:#9FE3D8;
+    --menta-tint:#173330;
+
+    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 28px -14px rgba(0,0,0,0.55);
+  }
+
+  *{box-sizing:border-box;}
+  html{color-scheme:light dark;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight:400;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1000px; margin:0 auto; padding-inline:20px;}
+  section{padding-block:clamp(48px,7vw,88px);}
+  h1,h2,h3{font-family:'Poppins',sans-serif; margin:0; text-wrap:balance;}
+  .eyebrow{
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;
+    color:var(--rosso); margin:0 0 14px; display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--verde-brand); flex:none;}
+
+  /* ---------- tricolore divider ---------- */
+  .tricolore{
+    width:64px; height:4px; border-radius:2px; overflow:hidden; display:flex; margin:0 auto;
+    border:1px solid rgba(36,31,28,0.12);
+  }
+  .tricolore span{flex:1;}
+  .tricolore span:nth-child(1){background:var(--verde-brand);}
+  .tricolore span:nth-child(2){background:#FFFFFF;}
+  .tricolore span:nth-child(3){background:var(--rosso-brand);}
+  .tricolore.center{margin:0;}
+
+  /* ---------- theme-swapped assets (dark-ink logo vs white logo) ---------- */
+  .if-dark{display:none;}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .if-light{display:none;}
+    :root:not([data-theme="light"]) .if-dark{display:block;}
+  }
+  :root[data-theme="dark"] .if-light{display:none;}
+  :root[data-theme="dark"] .if-dark{display:block;}
+
+  /* ---------- top bar (fixed light chrome, so the dark-ink mark always reads) ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:10;
+    background:rgba(250,246,236,0.92);
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    border-bottom:1px solid #E6DCC5;
+  }
+  .topbar-inner{
+    max-width:1000px; margin:0 auto; padding:12px 20px;
+    display:flex; align-items:center; gap:20px;
+  }
+  .topbar img{height:30px; width:auto; flex:none;}
+  .topbar nav{display:flex; gap:22px; margin-left:6px; flex:1; min-width:0;}
+  .topbar nav a{
+    font-size:14px; font-weight:500; color:#6E6255; text-decoration:none;
+    white-space:nowrap;
+  }
+  .topbar nav a:hover{color:#241F1C;}
+  .topbar .call{
+    flex:none; display:flex; align-items:center; gap:7px;
+    background:var(--rosso); color:var(--on-rosso); text-decoration:none;
+    font-size:13.5px; font-weight:600; padding:9px 15px; border-radius:99px;
+  }
+  .topbar .call svg{width:14px; height:14px; flex:none;}
+  @media (max-width:720px){ .topbar nav{display:none;} }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding-block:clamp(52px,9vw,96px) clamp(40px,6vw,64px);
+    background:
+      radial-gradient(60% 55% at 15% 0%, color-mix(in srgb, var(--verde-tint) 70%, transparent), transparent),
+      radial-gradient(55% 50% at 100% 10%, color-mix(in srgb, var(--rosso-tint) 55%, transparent), transparent);
+  }
+  .hero-logo{width:min(220px,52vw); height:auto; margin:0 0 28px;}
+  .hero h1{
+    font-weight:300; font-size:clamp(32px,5.4vw,54px); line-height:1.08; letter-spacing:-.01em;
+    max-width:16ch; margin-bottom:18px;
+  }
+  .hero h1 b{font-weight:700; font-style:normal;}
+  .tagline-pill{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13.5px; font-weight:600; letter-spacing:.03em;
+    background:var(--surface); border:1px solid var(--line); border-radius:99px;
+    padding:7px 16px; margin-bottom:22px; box-shadow:var(--shadow);
+  }
+  .hero p.lede{font-size:16.5px; color:var(--ink-soft); max-width:56ch; margin-bottom:30px;}
+
+  .cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:36px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    font-family:'Poppins',sans-serif; font-size:14.5px; font-weight:600;
+    padding:13px 22px; border-radius:99px; text-decoration:none; border:1.5px solid transparent;
+    cursor:pointer;
+  }
+  .btn svg{width:16px; height:16px; flex:none;}
+  .btn-primary{background:var(--rosso); color:var(--on-rosso);}
+  .btn-outline{border-color:var(--line); color:var(--ink); background:var(--surface);}
+  .btn-outline:hover{border-color:var(--ink-soft);}
+  .btn-text{color:var(--rosso); padding:13px 6px;}
+
+  .quickfacts{
+    display:flex; flex-wrap:wrap; gap:10px 28px; align-items:center;
+    padding-top:24px; border-top:1px solid var(--line);
+  }
+  .qf{display:flex; align-items:center; gap:8px; font-size:13.5px; color:var(--ink-soft);}
+  .qf svg{width:15px; height:15px; flex:none; color:var(--ink-soft);}
+  .qf b{color:var(--ink); font-weight:600;}
+  .status-pill{
+    display:inline-flex; align-items:center; gap:7px;
+    font-size:12.5px; font-weight:600; padding:5px 12px; border-radius:99px;
+  }
+  .status-pill .led{width:7px; height:7px; border-radius:50%;}
+  .status-pill.open{background:var(--verde-tint); color:var(--verde);}
+  .status-pill.open .led{background:var(--verde-brand);}
+  .status-pill.closed{background:var(--rosso-tint); color:var(--rosso);}
+  .status-pill.closed .led{background:var(--rosso-brand);}
+
+  /* ---------- section heads ---------- */
+  .section-head{margin-bottom:34px;}
+  .section-head h2{font-size:clamp(24px,3.4vw,32px); font-weight:600; margin-bottom:10px;}
+  .section-head p{color:var(--ink-soft); font-size:15px; max-width:58ch; margin:0;}
+
+  /* ---------- story ---------- */
+  .story{display:grid; grid-template-columns:1.2fr 1fr; gap:44px; align-items:start;}
+  @media (max-width:760px){ .story{grid-template-columns:1fr;} }
+  .story p{font-size:15.5px; color:var(--ink-soft); margin:0 0 16px;}
+  .story p:last-child{margin-bottom:0;}
+  .story em{font-style:italic; color:var(--ink);}
+
+  .rating-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:22px;
+  }
+  .rating-card .rc-top{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
+  .rating-card .rc-badge{
+    font-size:20px; font-weight:700; color:var(--verde); background:var(--verde-tint);
+    border-radius:10px; padding:8px 12px; line-height:1;
+  }
+  .rating-card h3{font-size:16px; font-weight:600; margin:0;}
+  .rating-card .rc-sub{font-size:13px; color:var(--ink-soft); margin:2px 0 0;}
+  .rating-rows{display:flex; flex-direction:column; gap:8px; margin:14px 0; font-size:13.5px;}
+  .rating-rows div{display:flex; justify-content:space-between; gap:12px; padding-top:8px; border-top:1px solid var(--line-soft);}
+  .rating-rows div:first-child{border-top:none; padding-top:0;}
+  .rating-rows span:last-child{font-weight:600;}
+  .rating-card a{font-size:13px; font-weight:600; color:var(--rosso); text-decoration:none;}
+
+  /* ---------- menu cards ---------- */
+  .menu-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+  @media (max-width:640px){ .menu-grid{grid-template-columns:1fr;} }
+  .menu-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:10px;
+  }
+  .menu-card .mc-top{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+  .menu-card h3{font-size:18px; font-weight:600;}
+  .mc-tag{
+    font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    padding:4px 9px; border-radius:99px; flex:none;
+  }
+  .mc-tag.food{background:var(--rosso-tint); color:var(--rosso);}
+  .mc-tag.drink{background:var(--menta-tint); color:var(--menta);}
+  .mc-tag.kids{font-family:'Baloo 2',cursive; font-weight:700; background:var(--verde-tint); color:var(--verde); text-transform:none; letter-spacing:0; font-size:12px;}
+  .menu-card p{font-size:14px; color:var(--ink-soft); margin:0; flex:1;}
+  .menu-card a.mc-link{
+    display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:600;
+    color:var(--rosso); text-decoration:none; margin-top:4px;
+  }
+  .menu-card a.mc-link svg{width:13px; height:13px;}
+
+  .highlight-strip{
+    margin-top:22px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    background:var(--surface-2); border:1px solid var(--line-soft); border-radius:var(--radius);
+    padding:16px 20px; font-size:13.5px; color:var(--ink-soft);
+  }
+  .highlight-strip b{color:var(--ink); font-weight:600;}
+  .order-links{display:flex; gap:10px; margin-top:22px; flex-wrap:wrap;}
+
+  /* ---------- find us ---------- */
+  .findus{display:grid; grid-template-columns:1fr 1.05fr; gap:44px;}
+  @media (max-width:760px){ .findus{grid-template-columns:1fr;} }
+  .contact-block{display:flex; flex-direction:column; gap:22px;}
+  .contact-row{display:flex; gap:14px; align-items:flex-start;}
+  .contact-row .ic{
+    width:38px; height:38px; border-radius:10px; background:var(--surface-2); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; flex:none; color:var(--rosso);
+  }
+  .contact-row .ic svg{width:17px; height:17px;}
+  .contact-row .ct-label{font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 3px; font-weight:600;}
+  .contact-row .ct-value{font-size:15.5px; margin:0;}
+  .contact-row a.ct-value{text-decoration:none;}
+  .contact-row a.ct-value:hover{text-decoration:underline;}
+
+  table.hours{width:100%; border-collapse:collapse; font-size:14.5px;}
+  table.hours td{padding:10px 4px; border-top:1px solid var(--line-soft);}
+  table.hours tr:first-child td{border-top:none;}
+  table.hours td:last-child{text-align:right; font-variant-numeric:tabular-nums; color:var(--ink-soft);}
+  table.hours tr.closed td:last-child{color:var(--rosso);}
+  table.hours tr.today td{font-weight:700; color:var(--ink);}
+  table.hours tr.today td:last-child{color:var(--verde);}
+  table.hours tr.today.closed td:last-child{color:var(--rosso);}
+
+  .map-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:22px; display:flex; flex-direction:column; gap:16px;
+  }
+
+  /* ---------- press ---------- */
+  .press-row{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media (max-width:720px){ .press-row{grid-template-columns:1fr;} }
+  .press-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:18px 20px; text-decoration:none; color:var(--ink); box-shadow:var(--shadow);
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .press-card .pc-src{font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; font-weight:700; color:var(--rosso);}
+  .press-card .pc-title{font-size:14.5px; font-weight:600; line-height:1.4;}
+  .press-card .pc-arrow{font-size:13px; color:var(--ink-soft); margin-top:auto;}
+
+  /* ---------- footer ---------- */
+  footer{
+    background:#1D1712; color:#FAF6EC; padding-block:56px 28px; margin-top:8px;
+  }
+  .footer-top{
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:36px; padding-bottom:36px;
+    border-bottom:1px solid rgba(250,246,236,0.14);
+  }
+  .footer-brand img{height:34px; width:auto; margin-bottom:14px;}
+  .footer-brand p{font-size:13.5px; color:rgba(250,246,236,0.6); max-width:34ch; margin:0;}
+  .footer-cols{display:flex; gap:56px; flex-wrap:wrap;}
+  .footer-col h4{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:rgba(250,246,236,0.5); margin:0 0 14px; font-weight:600;}
+  .footer-col a, .footer-col p{
+    display:block; font-size:14px; color:rgba(250,246,236,0.88); text-decoration:none; margin-bottom:10px;
+  }
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    padding-top:22px; font-size:12.5px; color:rgba(250,246,236,0.45);
+  }
+</style>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <img src="assets/logo-compatto.svg" alt="Ragù Italian Bistro">
+    <nav>
+      <a href="#story">Our story</a>
+      <a href="#menu">Menu</a>
+      <a href="#find-us">Find us</a>
+      <a href="#press">Press</a>
+    </nav>
+    <a class="call" href="tel:+447922958745">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call to book
+    </a>
+  </div>
+</div>
+
+<header class="hero wrap">
+  <p class="eyebrow"><span class="dot"></span>Guildhall Street · Preston City Centre</p>
+  <img class="hero-logo if-light" src="assets/logo-principale.svg" alt="Ragù Italian Bistro — Naples on a plate">
+  <img class="hero-logo if-dark" src="assets/logo-negativo-bianco.svg" alt="Ragù Italian Bistro — Naples on a plate">
+  <h1>Real Neapolitan cooking, in the <b>heart of Preston</b>.</h1>
+  <p class="tagline-pill"><span class="tricolore"><span></span><span></span><span></span></span> Consistency. Quality. Community.</p>
+  <p class="lede">Ragù is run by two Neapolitans, chef Luca Scognamiglio and Vincenzo Gaglione — the food they grew up on, cooked the way it's meant to be, five minutes from the Flag Market.</p>
+
+  <div class="cta-row">
+    <a class="btn btn-primary" href="tel:+447922958745">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call +44 7922 958745
+    </a>
+    <a class="btn btn-outline" href="https://www.instagram.com/ragu.italianbistro/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+      Message on Instagram
+    </a>
+    <a class="btn btn-outline" href="https://m.me/61586330701725" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      Message on Facebook
+    </a>
+    <a class="btn btn-text" href="#menu">See the full menu →</a>
+  </div>
+
+  <div class="quickfacts" id="quickfacts">
+    <span class="status-pill" id="statusPill"><span class="led"></span><span id="statusText">Checking hours…</span></span>
+    <span class="qf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <b>5–7 Guildhall Street</b>,&nbsp;Preston PR1&nbsp;3NU
+    </span>
+    <span class="qf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 6.6L21 9l-5 4.6L17.4 21 12 17.3 6.6 21 8 13.6 3 9l6.6-.4z"/></svg>
+      Food hygiene rating: <b>Very Good</b>
+    </span>
+  </div>
+</header>
+
+<main>
+
+  <section id="story" class="wrap">
+    <div class="section-head">
+      <p class="eyebrow"><span class="dot"></span>Our story</p>
+      <h2>Two Neapolitans, one idea of what Italian food should taste like.</h2>
+    </div>
+    <div class="story">
+      <div>
+        <p>Ragù opened at 5–7 Guildhall Street on <em>15 March 2026</em>, brought to Preston by chef <em>Luca Scognamiglio</em> and <em>Vincenzo Gaglione</em> — both from Naples, both tired of "Italian" restaurants that aren't. Luca runs the kitchen the way he learned it at home; Vincenzo runs the room. Between the two of them, the whole idea comes down to three words: consistency, quality, community.</p>
+        <p>Preston noticed. The <em>Lancashire Post</em> covered the opening, and <em>Blog Preston</em> came back a few weeks later for a full review — the smoked salmon fettuccine and the carbonara came in for particular praise. You'll find both on the à la carte menu below.</p>
+      </div>
+      <div class="rating-card">
+        <div class="rc-top">
+          <span class="rc-badge">VG</span>
+          <div>
+            <h3>Food hygiene rating</h3>
+            <p class="rc-sub">Food Standards Agency · last inspected 18 Mar 2026</p>
+          </div>
+        </div>
+        <div class="rating-rows">
+          <div><span>Management of food safety</span><span>Very good</span></div>
+          <div><span>Hygienic food handling</span><span>Very good</span></div>
+          <div><span>Cleanliness &amp; facilities</span><span>Good</span></div>
+        </div>
+        <a href="https://ratings.food.gov.uk/business/552448/ragu-italian-bistro-preston" target="_blank" rel="noopener">View the official rating →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="tricolore"><span></span><span></span><span></span></div></div>
+
+  <section id="menu" class="wrap">
+    <div class="section-head">
+      <p class="eyebrow"><span class="dot"></span>The menu</p>
+      <h2>Four menus, one kitchen.</h2>
+      <p>Every price and dish below is exactly what's on the table — the same menus used in the dining room, just easier to read on your phone.</p>
+    </div>
+    <div class="menu-grid">
+      <article class="menu-card">
+        <div class="mc-top"><h3>À La Carte</h3><span class="mc-tag food">Dinner</span></div>
+        <p>Antipasti, pasta, secondi and dolci — the full Neapolitan repertoire, from fritti to fish.</p>
+        <a class="mc-link" href="assets/menu-a-la-carte.pdf" target="_blank" rel="noopener">View PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+      </article>
+      <article class="menu-card">
+        <div class="mc-top"><h3>Lunch</h3><span class="mc-tag food">Midday</span></div>
+        <p>A shorter, quicker menu for the middle of the day — in and out without rushing.</p>
+        <a class="mc-link" href="assets/menu-lunch.pdf" target="_blank" rel="noopener">View PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+      </article>
+      <article class="menu-card">
+        <div class="mc-top"><h3>Cocktail</h3><span class="mc-tag drink">Bar</span></div>
+        <p>Aperitivo and after-dinner drinks, built to go with the food rather than fight it.</p>
+        <a class="mc-link" href="assets/menu-cocktail.pdf" target="_blank" rel="noopener">View PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+      </article>
+      <article class="menu-card">
+        <div class="mc-top"><h3>Kids</h3><span class="mc-tag kids">For little ones</span></div>
+        <p>Smaller plates, familiar flavours — a menu just for the youngest guests at the table.</p>
+        <a class="mc-link" href="assets/menu-kids.pdf" target="_blank" rel="noopener">View PDF <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+      </article>
+    </div>
+    <div class="highlight-strip">
+      <span>🍝</span>
+      <span><b>What reviewers keep ordering:</b> the fettuccine with smoked salmon, and the carbonara — both on the à la carte menu.</span>
+    </div>
+    <div class="order-links">
+      <a class="btn btn-outline" href="https://www.ubereats.com/gb/store/ragu-italian-bistro/60AgVN0EWVyKOatBZUCGuQ" target="_blank" rel="noopener">Order delivery on Uber Eats</a>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="tricolore"><span></span><span></span><span></span></div></div>
+
+  <section id="find-us" class="wrap">
+    <div class="section-head">
+      <p class="eyebrow"><span class="dot"></span>Find us</p>
+      <h2>Guildhall Street, right in the city centre.</h2>
+    </div>
+    <div class="findus">
+      <div class="contact-block">
+        <div class="contact-row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div>
+            <p class="ct-label">Address</p>
+            <a class="ct-value" href="https://www.google.com/maps/search/?api=1&amp;query=Ragu+Italian+Bistro+5-7+Guildhall+Street+Preston+PR1+3NU" target="_blank" rel="noopener">5–7 Guildhall Street, Preston, PR1 3NU</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div>
+            <p class="ct-label">Phone</p>
+            <a class="ct-value" href="tel:+447922958745">+44 7922 958745</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></span>
+          <div>
+            <p class="ct-label">Instagram</p>
+            <a class="ct-value" href="https://www.instagram.com/ragu.italianbistro/" target="_blank" rel="noopener">@ragu.italianbistro</a>
+          </div>
+        </div>
+        <a class="btn btn-primary" style="align-self:flex-start" href="https://www.google.com/maps/search/?api=1&amp;query=Ragu+Italian+Bistro+5-7+Guildhall+Street+Preston+PR1+3NU" target="_blank" rel="noopener">Open in Google Maps</a>
+      </div>
+
+      <div class="map-card">
+        <h3 style="font-size:16px;font-weight:600;margin:0;">Opening hours</h3>
+        <table class="hours" id="hoursTable">
+          <tr data-day="1"><td>Monday</td><td>12:00 – 20:00</td></tr>
+          <tr data-day="2" class="closed"><td>Tuesday</td><td>Closed</td></tr>
+          <tr data-day="3"><td>Wednesday</td><td>12:00 – 20:00</td></tr>
+          <tr data-day="4"><td>Thursday</td><td>12:00 – 20:00</td></tr>
+          <tr data-day="5"><td>Friday</td><td>12:00 – 20:00</td></tr>
+          <tr data-day="6"><td>Saturday</td><td>12:00 – 20:00</td></tr>
+          <tr data-day="0"><td>Sunday</td><td>12:00 – 20:00</td></tr>
+        </table>
+        <p style="font-size:12.5px;color:var(--ink-soft);margin:0;">Hours can change around holidays — if you're coming a long way, a quick call is always worth it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="press" class="wrap">
+    <div class="section-head">
+      <p class="eyebrow"><span class="dot"></span>In the press</p>
+      <h2>What Preston's been saying.</h2>
+    </div>
+    <div class="press-row">
+      <a class="press-card" href="https://www.lep.co.uk/lifestyle/food-and-drink/preston-new-opening-italian-restaurant-5629288" target="_blank" rel="noopener">
+        <span class="pc-src">Lancashire Post</span>
+        <span class="pc-title">New traditional Italian restaurant opens in Preston city centre</span>
+        <span class="pc-arrow">Read the piece →</span>
+      </a>
+      <a class="press-card" href="https://www.blogpreston.co.uk/2026/03/new-traditional-italian-restaurant-opens-in-preston-city-centre/" target="_blank" rel="noopener">
+        <span class="pc-src">Blog Preston</span>
+        <span class="pc-title">Opening announcement — a new traditional Italian bistro in the city centre</span>
+        <span class="pc-arrow">Read the piece →</span>
+      </a>
+      <a class="press-card" href="https://www.blogpreston.co.uk/2026/05/review-dont-walk-pasta-new-italian-bistro-ragu-in-preston-city-centre/" target="_blank" rel="noopener">
+        <span class="pc-src">Blog Preston</span>
+        <span class="pc-title">Full review — "Don't walk, pasta" new Italian bistro Ragù</span>
+        <span class="pc-arrow">Read the piece →</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo-negativo-bianco.svg" alt="Ragù Italian Bistro">
+        <p>Neapolitan cooking on Guildhall Street, Preston. Run by chef Luca Scognamiglio and Vincenzo Gaglione.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Visit</h4>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Ragu+Italian+Bistro+5-7+Guildhall+Street+Preston+PR1+3NU" target="_blank" rel="noopener">5–7 Guildhall Street<br>Preston, PR1 3NU</a>
+          <a href="tel:+447922958745">+44 7922 958745</a>
+        </div>
+        <div class="footer-col">
+          <h4>Menus</h4>
+          <a href="assets/menu-a-la-carte.pdf" target="_blank" rel="noopener">À la carte</a>
+          <a href="assets/menu-lunch.pdf" target="_blank" rel="noopener">Lunch</a>
+          <a href="assets/menu-cocktail.pdf" target="_blank" rel="noopener">Cocktail</a>
+          <a href="assets/menu-kids.pdf" target="_blank" rel="noopener">Kids</a>
+        </div>
+        <div class="footer-col">
+          <h4>Follow &amp; order</h4>
+          <a href="https://www.instagram.com/ragu.italianbistro/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://m.me/61586330701725" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.ubereats.com/gb/store/ragu-italian-bistro/60AgVN0EWVyKOatBZUCGuQ" target="_blank" rel="noopener">Uber Eats</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span id="footerYear">© 2026 Ragù Italian Bistro, Preston.</span>
+      <span>Consistency. Quality. Community.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  function londonNow(){
+    var parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone:'Europe/London', weekday:'short', hour:'2-digit', minute:'2-digit', hour12:false
+    }).formatToParts(new Date());
+    var map = {}; parts.forEach(function(p){ map[p.type] = p.value; });
+    var dayIndex = {Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[map.weekday];
+    return { day: dayIndex, minutes: parseInt(map.hour,10)*60 + parseInt(map.minute,10) };
+  }
+
+  var now = londonNow();
+  var OPEN_FROM = 12*60, OPEN_TO = 20*60;
+  var isTuesday = now.day === 2;
+  var withinHours = now.minutes >= OPEN_FROM && now.minutes < OPEN_TO;
+  var isOpen = !isTuesday && withinHours;
+
+  var pill = document.getElementById('statusPill');
+  var text = document.getElementById('statusText');
+  if (pill && text){
+    pill.classList.add(isOpen ? 'open' : 'closed');
+    if (isOpen){
+      text.textContent = 'Open now · until 8:00pm';
+    } else if (isTuesday){
+      text.textContent = 'Closed today · back tomorrow at noon';
+    } else if (now.minutes < OPEN_FROM){
+      text.textContent = 'Opens today at 12:00pm';
+    } else {
+      text.textContent = 'Closed now · opens tomorrow at noon';
+    }
+  }
+
+  var rows = document.querySelectorAll('#hoursTable tr[data-day]');
+  rows.forEach(function(row){
+    if (parseInt(row.getAttribute('data-day'),10) === now.day) row.classList.add('today');
+  });
+
+  var yearEl = document.getElementById('footerYear');
+  if (yearEl){
+    var y = new Date().getFullYear();
+    yearEl.textContent = '© ' + y + ' Ragù Italian Bistro, Preston.';
+  }
+})();
+</script>
