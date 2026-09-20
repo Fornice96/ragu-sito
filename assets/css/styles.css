@@ -372,6 +372,22 @@
     .mr-name{flex:none;}
   }
 
+  .menu-highlights{margin-top:28px;}
+  .mh-intro{font-size:13.5px; color:var(--ink-soft); margin:0 0 12px;}
+  .dish-grid{display:grid; grid-template-columns:1fr 1fr; gap:0 32px;}
+  .dish{
+    display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+    padding-block:10px; border-top:1px dashed var(--line-soft); font-size:14px;
+  }
+  .dish:nth-child(-n+2){border-top:none;}
+  .dish-name em{font-style:normal; color:var(--ink-soft); font-size:12px;}
+  .dish-price{font-weight:600; white-space:nowrap; flex:none;}
+  @media (max-width:640px){
+    .dish-grid{grid-template-columns:1fr;}
+    .dish{border-top:1px dashed var(--line-soft);}
+    .dish:first-child{border-top:none;}
+  }
+
   .highlight-strip{
     margin-top:22px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;
     background:var(--surface-2); border:1px solid var(--line-soft); border-radius:var(--radius);
