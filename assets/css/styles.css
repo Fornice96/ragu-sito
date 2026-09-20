@@ -188,6 +188,20 @@
     .nav-toggle{display:flex;}
   }
 
+  /* ---------- fixed mobile action bar (call + directions) ---------- */
+  .mobile-actionbar{display:none;}
+  @media (max-width:720px){
+    body{padding-bottom:70px;}
+    .mobile-actionbar{
+      display:flex; gap:10px; position:fixed; left:0; right:0; bottom:0; z-index:30;
+      background:var(--surface); border-top:1px solid var(--line);
+      box-shadow:0 -6px 20px -10px rgba(36,31,28,0.28);
+      padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    }
+    .mobile-actionbar .btn{flex:1; justify-content:center;}
+    body:has(#cookieBar:not([hidden])) .mobile-actionbar{display:none;}
+  }
+
   /* ---------- mobile full-screen nav ---------- */
   .mobile-nav{
     position:fixed; inset:0; z-index:40; background:#1D1712; color:#FAF6EC;
@@ -426,7 +440,10 @@
   .map-card{
     background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
     box-shadow:var(--shadow); padding:22px; display:flex; flex-direction:column; gap:16px;
+    overflow:hidden;
   }
+  .map-embed{margin:-22px -22px 0; aspect-ratio:4/3; background:var(--surface-2);}
+  .map-embed iframe{width:100%; height:100%; border:0; display:block;}
   .map-card-title{font-size:16px; font-weight:600; margin:0;}
   .map-card-note{font-size:12.5px; color:var(--ink-soft); margin:0;}
 
