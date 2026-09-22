@@ -4,6 +4,9 @@
  * Time is read via Intl in the Europe/London timezone rather than the
  * visitor's local clock, so the restaurant reads correctly as open/closed
  * for someone browsing from anywhere, and DST is handled for free.
+ *
+ * Open every day: 12:00-20:00, except Friday and Saturday which run until
+ * 21:00 (updated 22 September 2026).
  */
 'use strict';
 
@@ -20,20 +23,17 @@
 
   const now = londonNow();
   const OPEN_FROM = 12 * 60;   // 12:00
-  const OPEN_TO = 20 * 60;     // 20:00
-  const CLOSED_DAY = 2;        // Tuesday
-  const isTuesday = now.day === CLOSED_DAY;
-  const withinHours = now.minutes >= OPEN_FROM && now.minutes < OPEN_TO;
-  const isOpen = !isTuesday && withinHours;
+  const isLateNight = now.day === 5 || now.day === 6; // Friday, Saturday
+  const OPEN_TO = isLateNight ? 21 * 60 : 20 * 60;
+  const closeLabel = isLateNight ? '9:00pm' : '8:00pm';
+  const isOpen = now.minutes >= OPEN_FROM && now.minutes < OPEN_TO;
 
   const pill = document.getElementById('statusPill');
   const text = document.getElementById('statusText');
   if (pill && text){
     pill.classList.add(isOpen ? 'open' : 'closed');
     if (isOpen){
-      text.textContent = 'Open now · until 8:00pm';
-    } else if (isTuesday){
-      text.textContent = 'Closed today · back tomorrow at noon';
+      text.textContent = 'Open now · until ' + closeLabel;
     } else if (now.minutes < OPEN_FROM){
       text.textContent = 'Opens today at 12:00pm';
     } else {

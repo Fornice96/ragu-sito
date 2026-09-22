@@ -39,7 +39,8 @@
     "addressCountry": "GB"
   },
   "openingHoursSpecification": [
-    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "12:00", "closes": "20:00"}
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday"], "opens": "12:00", "closes": "20:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "12:00", "closes": "21:00"}
   ],
   "servesCuisine": "Neapolitan",
   "acceptsReservations": "True",
@@ -99,7 +100,7 @@
   <div class="mobile-nav-info">
     <div>
       <p class="mn-label">Opening hours</p>
-      <p>Mon, Wed–Sun · 12:00–20:00. Closed Tuesday.</p>
+      <p>Every day · 12:00–20:00, Fri–Sat until 21:00.</p>
     </div>
     <div>
       <p class="mn-label">Call to book</p>
@@ -153,7 +154,7 @@
       </div>
 
       <div class="quickfacts" id="quickfacts">
-        <span class="status-pill" id="statusPill"><span class="led"></span><span id="statusText">Mon, Wed–Sun · 12:00–20:00</span></span>
+        <span class="status-pill" id="statusPill"><span class="led"></span><span id="statusText">Open every day · 12:00–20:00</span></span>
         <span class="qf">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <b>5–7 Guildhall Street</b>,&nbsp;Preston PR1&nbsp;3NU
@@ -332,11 +333,11 @@
         <h3 class="map-card-title">Opening hours</h3>
         <table class="hours" id="hoursTable">
           <tr data-day="1"><td>Monday</td><td>12:00 – 20:00</td></tr>
-          <tr data-day="2" class="closed"><td>Tuesday</td><td>Closed</td></tr>
+          <tr data-day="2"><td>Tuesday</td><td>12:00 – 20:00</td></tr>
           <tr data-day="3"><td>Wednesday</td><td>12:00 – 20:00</td></tr>
           <tr data-day="4"><td>Thursday</td><td>12:00 – 20:00</td></tr>
-          <tr data-day="5"><td>Friday</td><td>12:00 – 20:00</td></tr>
-          <tr data-day="6"><td>Saturday</td><td>12:00 – 20:00</td></tr>
+          <tr data-day="5"><td>Friday</td><td>12:00 – 21:00</td></tr>
+          <tr data-day="6"><td>Saturday</td><td>12:00 – 21:00</td></tr>
           <tr data-day="0"><td>Sunday</td><td>12:00 – 20:00</td></tr>
         </table>
         <p class="map-card-note">Hours can change around holidays — if you're coming a long way, a quick call is always worth it.</p>
