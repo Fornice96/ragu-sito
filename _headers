@@ -1,0 +1,26 @@
+/
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Content-Security-Policy: default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; frame-src 'self' https://www.google.com; base-uri 'self'; form-action 'self'
+  Cache-Control: public, max-age=120, stale-while-revalidate=86400
+
+/index.html
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Content-Security-Policy: default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; frame-src 'self' https://www.google.com; base-uri 'self'; form-action 'self'
+  Cache-Control: public, max-age=120, stale-while-revalidate=86400
+
+/privacy.html
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Cache-Control: public, max-age=120, stale-while-revalidate=86400
+
+/assets/*
+  X-Content-Type-Options: nosniff
+  Cache-Control: public, max-age=3600, stale-while-revalidate=604800
