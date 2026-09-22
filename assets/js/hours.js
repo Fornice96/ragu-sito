@@ -25,7 +25,7 @@
   const OPEN_FROM = 12 * 60;   // 12:00
   const isLateNight = now.day === 5 || now.day === 6; // Friday, Saturday
   const OPEN_TO = isLateNight ? 21 * 60 : 20 * 60;
-  const closeLabel = isLateNight ? '9:00pm' : '8:00pm';
+  const closeLabel = isLateNight ? '21:00' : '20:00';
   const isOpen = now.minutes >= OPEN_FROM && now.minutes < OPEN_TO;
 
   const pill = document.getElementById('statusPill');
@@ -35,9 +35,9 @@
     if (isOpen){
       text.textContent = 'Open now · until ' + closeLabel;
     } else if (now.minutes < OPEN_FROM){
-      text.textContent = 'Opens today at 12:00pm';
+      text.textContent = 'Opens today at 12:00';
     } else {
-      text.textContent = 'Closed now · opens tomorrow at noon';
+      text.textContent = 'Closed now · opens tomorrow at 12:00';
     }
   }
 
