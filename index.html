@@ -26,7 +26,10 @@
 {
   "@context": "https://schema.org",
   "@type": "Restaurant",
+  "@id": "https://ragu-italian-bistrot.netlify.app/#restaurant",
   "name": "Ragù Italian Bistro",
+  "logo": "https://ragu-italian-bistrot.netlify.app/assets/apple-touch-icon.png",
+  "foundingDate": "2026-03-15",
   "image": "https://ragu-italian-bistrot.netlify.app/assets/gallery/foto6.jpg",
   "url": "https://ragu-italian-bistrot.netlify.app/",
   "priceRange": "££",
@@ -43,8 +46,9 @@
     {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "12:00", "closes": "21:00"}
   ],
   "servesCuisine": "Neapolitan",
-  "acceptsReservations": "True",
+  "acceptsReservations": true,
   "hasMenu": [
+    "https://ragu-italian-bistrot.netlify.app/#menu-highlights",
     "https://ragu-italian-bistrot.netlify.app/assets/menu-a-la-carte.pdf",
     "https://ragu-italian-bistrot.netlify.app/assets/menu-lunch.pdf",
     "https://ragu-italian-bistrot.netlify.app/assets/menu-cocktail.pdf",
@@ -64,6 +68,55 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "@id": "https://ragu-italian-bistrot.netlify.app/#menu-highlights",
+  "name": "Menu highlights",
+  "url": "https://ragu-italian-bistrot.netlify.app/#menu",
+  "hasMenuSection": [
+    {
+      "@type": "MenuSection",
+      "name": "Antipasti",
+      "hasMenuItem": [
+        {"@type": "MenuItem", "name": "Bruschetta della Nonna Maria", "suitableForDiet": "https://schema.org/VegetarianDiet", "offers": {"@type": "Offer", "price": "8.50", "priceCurrency": "GBP"}},
+        {"@type": "MenuItem", "name": "Arancini di Carne", "offers": {"@type": "Offer", "price": "11.50", "priceCurrency": "GBP"}}
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Pizza",
+      "hasMenuItem": [
+        {"@type": "MenuItem", "name": "Margherita", "suitableForDiet": "https://schema.org/VegetarianDiet", "offers": {"@type": "Offer", "price": "13.00", "priceCurrency": "GBP"}},
+        {"@type": "MenuItem", "name": "Masaniello", "description": "Spicy.", "offers": {"@type": "Offer", "price": "16.50", "priceCurrency": "GBP"}}
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Pasta",
+      "hasMenuItem": [
+        {"@type": "MenuItem", "name": "Spaghetti Carbonara", "offers": {"@type": "Offer", "price": "14.50", "priceCurrency": "GBP"}},
+        {"@type": "MenuItem", "name": "Fettuccine al Salmone Affumicato", "offers": {"@type": "Offer", "price": "15.50", "priceCurrency": "GBP"}}
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Secondi",
+      "hasMenuItem": [
+        {"@type": "MenuItem", "name": "Fillet of Seabass", "offers": {"@type": "Offer", "price": "21.95", "priceCurrency": "GBP"}}
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Dolci",
+      "hasMenuItem": [
+        {"@type": "MenuItem", "name": "Tiramisù della Casa", "offers": {"@type": "Offer", "price": "6.95", "priceCurrency": "GBP"}}
+      ]
+    }
+  ]
+}
+</script>
 <link rel="stylesheet" href="assets/css/styles.css"></head><body>
 
 <div class="topbar">
@@ -156,7 +209,7 @@
       <p class="hero-note">Featured in the <a href="https://www.lep.co.uk/lifestyle/food-and-drink/preston-new-opening-italian-restaurant-5629288" target="_blank" rel="noopener">Lancashire Post</a> and <a href="https://www.blogpreston.co.uk/2026/05/review-dont-walk-pasta-new-italian-bistro-ragu-in-preston-city-centre/" target="_blank" rel="noopener">Blog Preston</a>.</p>
 
       <div class="quickfacts" id="quickfacts">
-        <span class="status-pill" id="statusPill"><span class="led"></span><span id="statusText">Open every day · 12:00–20:00</span></span>
+        <span class="status-pill" id="statusPill"><span class="led"></span><span id="statusText">Open every day · 12:00–20:00, Fri–Sat until 21:00</span></span>
         <span class="qf">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <b>5–7 Guildhall Street</b>,&nbsp;Preston PR1&nbsp;3NU
