@@ -12,6 +12,7 @@ Condensato dei due audit SEO fatti finora (22 e 23 settembre 2026, punteggio 62/
 - Header di sicurezza in `_headers`: CSP, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, HSTS (`Strict-Transport-Security`) — presenti su tutti e 4 i blocchi (`/`, `/index.html`, `/privacy.html`, `/assets/*`), non solo su uno.
 - Nessun file generato da macOS (`.DS_Store`) va committato — c'è un `.gitignore` apposta.
 - `privacy.html` non ha più CSS/JS inline: ora carica `assets/css/styles.css` (sezione 17, "Privacy policy page") e `assets/js/cookie-consent.js`, come le altre pagine. Di conseguenza `_headers` applica la stessa CSP stretta di `index.html` anche a `/privacy.html` (24/09/2026, fix in locale, in attesa di push).
+- Verificato (24/09/2026): nessun crawler AI è bloccato da `robots.txt` (`User-agent: * / Allow: /` copre anche GPTBot, OAI-SearchBot, ClaudeBot, Claude-SearchBot, PerplexityBot, Google-Extended, ecc. — non serve aggiungere righe dedicate). Il sito è inoltre interamente statico e renderizzato lato server: nessun contenuto dipende da JavaScript per essere visibile ai crawler. Due punti di forza confermati, nessuna azione da fare.
 
 ## Ancora aperto — azioni esterne (non risolvibili da codice)
 - Google Business Profile non ancora confermata/collegata — il fattore singolo più pesante per il local ranking.
@@ -31,6 +32,12 @@ Condensato dei due audit SEO fatti finora (22 e 23 settembre 2026, punteggio 62/
 - Il menu mobile (`assets/js/nav.js`), aperto da tastiera, non sposta il focus dentro il pannello e non lo riporta sul pulsante hamburger alla chiusura (niente focus trap) — problema reale per chi naviga senza mouse, non solo teorico.
 - Manca un link "skip to content" a inizio pagina per chi usa tastiera o screen reader e vuole saltare la navigazione.
 - Individuati durante la revisione del 24/09/2026, non ancora presenti nei due audit SEO precedenti.
+
+## Ancora aperto — readiness per motori/agenti AI (GEO, revisione 24/09/2026)
+- Manca un paragrafo "definitorio" e autosufficiente in cima alla pagina (formato risposta diretta, circa 130-170 parole, es. "Ragù Italian Bistro è un ristorante napoletano a Preston che serve...") che un motore AI possa citare senza altro contesto. Oggi il testo più vicino a questo è nella sezione "Our story", più in basso nella pagina — i modelli AI citano soprattutto il primo 30% della pagina.
+- `llms.txt` esiste ma non segue il formato standard proposto (manca la riga di descrizione con `>` e i link ai menù non sono in formato markdown `[nome](url): descrizione`). Impatto reale basso — Google dichiara esplicitamente di ignorare questo file per Search/AI Overviews — ma potrebbe aiutare altri crawler AI se ben formattato. Bassa priorità.
+- Nessuna presenza del locale su Wikipedia/Reddit/YouTube/LinkedIn: secondo gli studi più recenti le menzioni del brand su queste piattaforme correlano con la citabilità nei motori AI più dei backlink classici (di cui si parla già sopra per l'articolo del Lancashire Post). Azione esterna, non di codice.
+- Il numero di telefono come unico canale di prenotazione diventa sempre meno "azionabile" per un agente AI, man mano che questi motori aggiungono prenotazioni automatizzate (es. Google AI Mode); rinforza — non sostituisce — il punto già aperto sopra "un vero sistema di prenotazione online".
 
 ## Ancora aperto — lavoro di contenuto/codice, ma più corposo
 - Pubblicare i 4 menù PDF come HTML completo (il clone Word editabile è già pronto, vedi Project) — include il menù bambini, che nel PDF originale non ha quasi testo estraibile.
