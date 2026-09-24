@@ -10,6 +10,9 @@
 <meta name="theme-color" content="#C81C2E">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
+<link rel="preload" href="assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/poppins-600.woff2" as="font" type="font/woff2" crossorigin>
+
 <meta property="og:type" content="restaurant">
 <meta property="og:site_name" content="Ragù Italian Bistro">
 <meta property="og:locale" content="en_GB">
@@ -119,6 +122,8 @@
 </script>
 <link rel="stylesheet" href="assets/css/styles.css"></head><body>
 
+<a class="skip-link" href="#main-content">Skip to content</a>
+
 <div class="topbar">
   <div class="topbar-inner">
     <img src="assets/logo-compatto.svg" alt="Ragù Italian Bistro">
@@ -179,7 +184,10 @@
 
 <header class="hero-full">
   <div class="hero-media">
-    <img src="assets/gallery/foto6.jpg" alt="Ragù Italian Bistro storefront on Guildhall Street, Preston" width="1069" height="716" fetchpriority="high">
+    <picture>
+      <source type="image/webp" srcset="assets/gallery/foto6.webp">
+      <img src="assets/gallery/foto6.jpg" alt="Ragù Italian Bistro storefront on Guildhall Street, Preston" width="1069" height="716" fetchpriority="high">
+    </picture>
   </div>
   <div class="hero-card-wrap wrap">
     <div class="hero-card">
@@ -223,7 +231,7 @@
   </div>
 </header>
 
-<main>
+<main id="main-content">
 
   <section id="story" class="wrap">
     <div class="section-head reveal">
@@ -255,19 +263,34 @@
     <div class="story-gallery" id="gallery">
       <div class="gallery-grid">
         <a class="g-big" href="assets/gallery/foto8.jpg" target="_blank" rel="noopener">
-          <img src="assets/gallery/foto8.jpg" alt="Margherita pizza fresh from the oven, mozzarella and basil" width="528" height="900" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/webp" srcset="assets/gallery/foto8.webp">
+            <img src="assets/gallery/foto8.jpg" alt="Margherita pizza fresh from the oven, mozzarella and basil" width="528" height="900" loading="lazy" decoding="async">
+          </picture>
         </a>
         <a href="assets/gallery/foto9.jpg" target="_blank" rel="noopener">
-          <img src="assets/gallery/foto9.jpg" alt="Creamy fettuccine with pancetta, mushrooms and basil" width="712" height="900" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/webp" srcset="assets/gallery/foto9.webp">
+            <img src="assets/gallery/foto9.jpg" alt="Creamy fettuccine with pancetta, mushrooms and basil" width="712" height="900" loading="lazy" decoding="async">
+          </picture>
         </a>
         <a href="assets/gallery/foto10.jpg" target="_blank" rel="noopener">
-          <img src="assets/gallery/foto10.jpg" alt="Arancini with tomato sauce and parmesan" width="900" height="634" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/webp" srcset="assets/gallery/foto10.webp">
+            <img src="assets/gallery/foto10.jpg" alt="Arancini with tomato sauce and parmesan" width="900" height="634" loading="lazy" decoding="async">
+          </picture>
         </a>
         <a href="assets/gallery/foto12.jpg" target="_blank" rel="noopener">
-          <img src="assets/gallery/foto12.jpg" alt="Bruschetta with fresh tomato and basil" width="900" height="632" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/webp" srcset="assets/gallery/foto12.webp">
+            <img src="assets/gallery/foto12.jpg" alt="Bruschetta with fresh tomato and basil" width="900" height="632" loading="lazy" decoding="async">
+          </picture>
         </a>
         <a href="assets/gallery/foto11.jpg" target="_blank" rel="noopener">
-          <img src="assets/gallery/foto11.jpg" alt="Lemon dessert in a jar with meringue and wafer" width="675" height="900" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/webp" srcset="assets/gallery/foto11.webp">
+            <img src="assets/gallery/foto11.jpg" alt="Lemon dessert in a jar with meringue and wafer" width="675" height="900" loading="lazy" decoding="async">
+          </picture>
         </a>
       </div>
       <p class="gallery-note">More on Instagram <a href="https://www.instagram.com/ragu.italianbistro/" target="_blank" rel="noopener">@ragu.italianbistro</a></p>
@@ -277,7 +300,10 @@
   <section id="location" class="wrap">
     <div class="zigzag">
       <div class="zz-media">
-        <img src="assets/gallery/foto7.jpg" alt="Table set for dinner at Ragù Italian Bistro, with the bar in the background" width="900" height="1600" loading="lazy" decoding="async">
+        <picture>
+          <source type="image/webp" srcset="assets/gallery/foto7.webp">
+          <img src="assets/gallery/foto7.jpg" alt="Table set for dinner at Ragù Italian Bistro, with the bar in the background" width="900" height="1600" loading="lazy" decoding="async">
+        </picture>
       </div>
       <div class="zz-text reveal">
         <p class="eyebrow"><span class="dot"></span>The dining room</p>

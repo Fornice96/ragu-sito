@@ -1,19 +1,19 @@
 # Ragù Italian Bistro
 
-Authentic Neapolitan restaurant at 5–7 Guildhall Street, Preston, PR1 3NU, United Kingdom.
+> Authentic Neapolitan restaurant at 5–7 Guildhall Street, Preston, PR1 3NU, United Kingdom. Run by chef Vincenzo Gaglione and Luca Scognamiglio, both from Naples, open since 15 March 2026. Cuisine: Neapolitan/Italian. Price range: ££. Phone: +44 7922 958745. Opening hours: every day 12:00–20:00, Friday and Saturday until 21:00. Food hygiene rating: Very Good.
 
-Cuisine: Neapolitan / Italian
-Price range: ££
-Phone: +44 7922 958745
-Opening hours: Every day, 12:00–20:00 (Friday and Saturday until 21:00).
-Food hygiene rating: Very Good (official record: https://ratings.food.gov.uk/business/552448/ragu-italian-bistro-preston)
+## Menus
+- [À la carte](https://ragu-italian-bistrot.netlify.app/assets/menu-a-la-carte.pdf): Antipasti, pizza, pasta, secondi and dolci — the full Neapolitan repertoire.
+- [Lunch](https://ragu-italian-bistrot.netlify.app/assets/menu-lunch.pdf): A shorter, quicker menu for the middle of the day.
+- [Cocktail](https://ragu-italian-bistrot.netlify.app/assets/menu-cocktail.pdf): Aperitivo and after-dinner drinks.
+- [Kids](https://ragu-italian-bistrot.netlify.app/assets/menu-kids.pdf): Smaller plates for younger guests.
 
-Menus:
-- À la carte: https://ragu-italian-bistrot.netlify.app/assets/menu-a-la-carte.pdf
-- Lunch: https://ragu-italian-bistrot.netlify.app/assets/menu-lunch.pdf
-- Cocktail: https://ragu-italian-bistrot.netlify.app/assets/menu-cocktail.pdf
-- Kids: https://ragu-italian-bistrot.netlify.app/assets/menu-kids.pdf
+## Links
+- [Website](https://ragu-italian-bistrot.netlify.app/): Homepage with opening hours, menu highlights, gallery and directions.
+- [Privacy Policy](https://ragu-italian-bistrot.netlify.app/privacy.html): How this website handles data and cookies.
+- [Instagram](https://www.instagram.com/ragu.italianbistro/): Photos and updates.
+- [Uber Eats](https://www.ubereats.com/gb/store/ragu-italian-bistro/60AgVN0EWVyKOatBZUCGuQ): Order delivery.
 
-Website: https://ragu-italian-bistrot.netlify.app/
-Instagram: https://www.instagram.com/ragu.italianbistro/
-Uber Eats (delivery): https://www.ubereats.com/gb/store/ragu-italian-bistro/60AgVN0EWVyKOatBZUCGuQ
+## Facts
+- Food hygiene rating: Very Good, Food Standards Agency, last inspected 18 March 2026 — https://ratings.food.gov.uk/business/552448/ragu-italian-bistro-preston
+- Address: 5–7 Guildhall Street, Preston, PR1 3NU, United Kingdom.
