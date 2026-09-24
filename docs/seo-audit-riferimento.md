@@ -18,7 +18,8 @@ Condensato dei due audit SEO fatti finora (22 e 23 settembre 2026, punteggio 62/
 - Preload dei due pesi Poppins più usati (400 e 600) in `index.html` per velocizzare la comparsa del testo. La catena di 9 file font resta invariata (ridurla richiederebbe eliminare pesi non usati o un font variabile — intervento più corposo, non fatto).
 - Il menu mobile (`assets/js/nav.js`) ora sposta il focus al suo interno all'apertura (con focus trap su Tab/Shift+Tab) e lo riporta sul pulsante hamburger alla chiusura. Aggiunto anche un link "Skip to content" a inizio pagina.
 - `llms.txt` riformattato secondo lo standard proposto (titolo, sommario, sezioni con link in formato markdown) — stessi dati di prima, solo formato corretto.
-- Tutti i fix sopra: 24/09/2026, in locale, in attesa di push.
+- I 4 PDF dei menù sono stati compressi con Ghostscript (`-dPDFSETTINGS=/screen`): da 4,5MB a ~620KB totali (-86%). Il testo dei piatti/prezzi è vettoriale e resta identico; a perdere un po' di nitidezza sono solo le foto/sfondo (200→72 PPI), verificato pagina per pagina che restino leggibili e presentabili.
+- Tutti i fix sopra: 24/09/2026, pushati su main.
 
 ## Ancora aperto — azioni esterne (non risolvibili da codice)
 - Google Business Profile non ancora confermata/collegata — il fattore singolo più pesante per il local ranking.
@@ -46,4 +47,3 @@ Condensato dei due audit SEO fatti finora (22 e 23 settembre 2026, punteggio 62/
 - Lavorare la frase di ricerca locale principale ("Italian restaurant" + nome del locale) nell'H1 (oggi già presente nel `<title>`, non ancora nell'H1 della hero — anche questo è copy, da proporre a Ciro).
 - Cambiare `sameAs` da Messenger a una vera Facebook Page, quando esiste (serve sapere se/quando la pagina Facebook vera viene creata).
 - AVIF e `srcset` responsive multi-risoluzione per le immagini (oltre al WebP già fatto) — miglioria ulteriore, non urgente.
-- 4 PDF dei menù pesanti (816KB–1.9MB l'uno) — da comprimere, ma serve un tool (Ghostscript o qpdf) non ancora installato in locale, e va verificato che il testo resti leggibile e i prezzi/allergeni accurati dopo la compressione.
