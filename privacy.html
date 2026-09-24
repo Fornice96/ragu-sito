@@ -11,183 +11,7 @@
 <meta name="theme-color" content="#C81C2E">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-<style>
-  @font-face{
-    font-family:'Poppins'; font-style:normal; font-weight:300; font-display:swap;
-    src: url('assets/fonts/poppins-300.woff2') format('woff2');
-  }
-  @font-face{
-    font-family:'Poppins'; font-style:normal; font-weight:400; font-display:swap;
-    src: url('assets/fonts/poppins-400.woff2') format('woff2');
-  }
-  @font-face{
-    font-family:'Poppins'; font-style:normal; font-weight:500; font-display:swap;
-    src: url('assets/fonts/poppins-500.woff2') format('woff2');
-  }
-  @font-face{
-    font-family:'Poppins'; font-style:normal; font-weight:600; font-display:swap;
-    src: url('assets/fonts/poppins-600.woff2') format('woff2');
-  }
-  @font-face{
-    font-family:'Poppins'; font-style:normal; font-weight:700; font-display:swap;
-    src: url('assets/fonts/poppins-700.woff2') format('woff2');
-  }
-
-  :root{
-    --paper:#FAF6EC;
-    --surface:#FFFFFF;
-    --surface-2:#FFFCF5;
-    --ink:#241F1C;
-    --ink-soft:#6E6255;
-    --line:#E6DCC5;
-    --line-soft:#F1E9D5;
-
-    --rosso-brand:#EE2739;
-    --rosso:#C81C2E;
-    --rosso-tint:#FBE2E0;
-    --on-rosso:#FFFFFF;
-
-    --verde-brand:#0C9547;
-    --verde:#0B7A3B;
-    --verde-tint:#E1F0DA;
-
-    --menta-brand:#7FCFC4;
-    --menta:#3E8F84;
-
-    --shadow: 0 1px 2px rgba(36,31,28,0.05), 0 10px 28px -14px rgba(36,31,28,0.22);
-    --radius: 14px;
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --paper:#1B1613;
-      --surface:#241E19;
-      --surface-2:#211B16;
-      --ink:#F3ECDD;
-      --ink-soft:#BBAC93;
-      --line:#3C2F23;
-      --line-soft:#2A2119;
-
-      --rosso-brand:#FF6B70;
-      --rosso:#FF8A8E;
-      --rosso-tint:#3A1E1D;
-
-      --verde-brand:#3FCB7C;
-      --verde:#6BDB9B;
-      --verde-tint:#123322;
-
-      --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 28px -14px rgba(0,0,0,0.55);
-    }
-  }
-
-  *{box-sizing:border-box;}
-  html{color-scheme:light dark;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-weight:400;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  img{max-width:100%; display:block;}
-  a{color:inherit;}
-  .wrap{max-width:1000px; margin:0 auto; padding-inline:20px;}
-  h1,h2,h3{font-family:'Poppins',sans-serif; margin:0; text-wrap:balance;}
-
-  /* ---------- top bar ---------- */
-  .topbar{
-    position:sticky; top:0; z-index:10;
-    background:rgba(250,246,236,0.92);
-    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-    border-bottom:1px solid #E6DCC5;
-  }
-  .topbar-inner{
-    max-width:1000px; margin:0 auto; padding:12px 20px;
-    display:flex; align-items:center; gap:20px;
-  }
-  .topbar img{height:30px; width:auto; flex:none;}
-  .topbar .back{
-    margin-left:auto; font-size:14px; font-weight:500; color:var(--ink-soft); text-decoration:none;
-    display:flex; align-items:center; gap:6px;
-  }
-  .topbar .back:hover{color:var(--ink);}
-  .topbar .back svg{width:15px; height:15px;}
-
-  /* ---------- legal content ---------- */
-  .legal-hero{padding-block:clamp(40px,7vw,64px) 8px;}
-  .legal-hero .eyebrow{
-    font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;
-    color:var(--rosso); margin:0 0 12px;
-  }
-  .legal-hero h1{font-weight:300; font-size:clamp(28px,4.6vw,42px); letter-spacing:-.01em; margin-bottom:10px;}
-  .legal-hero h1 b{font-weight:700; font-style:normal;}
-  .legal-hero p.updated{font-size:13.5px; color:var(--ink-soft); margin:0;}
-
-  .legal-body{padding-block:8px clamp(56px,8vw,88px);}
-  .legal-card{
-    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
-    box-shadow:var(--shadow); padding:clamp(24px,4vw,40px); display:flex; flex-direction:column; gap:30px;
-  }
-  .legal-card section h2{
-    font-size:18px; font-weight:600; margin-bottom:10px; display:flex; align-items:center; gap:10px;
-  }
-  .legal-card section h2 .num{
-    font-size:12px; font-weight:700; color:var(--rosso); background:var(--rosso-tint);
-    width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex:none;
-  }
-  .legal-card section p{font-size:14.5px; color:var(--ink-soft); margin:0 0 10px;}
-  .legal-card section p:last-child{margin-bottom:0;}
-  .legal-card section ul{margin:0 0 10px; padding-left:20px; font-size:14.5px; color:var(--ink-soft);}
-  .legal-card section li{margin-bottom:6px;}
-  .legal-card section a{color:var(--rosso); text-decoration:underline; font-weight:500;}
-  .legal-card strong{color:var(--ink); font-weight:600;}
-  .legal-card hr{border:none; border-top:1px solid var(--line-soft); margin:0;}
-
-  .contact-strip{
-    background:var(--surface-2); border:1px solid var(--line-soft); border-radius:var(--radius);
-    padding:18px 20px; font-size:14px; color:var(--ink-soft); display:flex; flex-direction:column; gap:4px;
-  }
-  .contact-strip strong{color:var(--ink);}
-
-  /* ---------- footer ---------- */
-  footer{
-    background:#1D1712; color:#FAF6EC; padding-block:40px 28px; margin-top:8px;
-  }
-  .footer-bottom{
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-    font-size:12.5px; color:rgba(250,246,236,0.45);
-  }
-  .footer-bottom a{color:inherit; text-decoration:underline;}
-  .footer-bottom a:hover{color:rgba(250,246,236,0.8);}
-
-  /* ---------- cookie notice bar (kept for consistency with the homepage) ---------- */
-  .cookie-bar{
-    position:fixed; left:0; right:0; bottom:0; z-index:50;
-    background:#1D1712; color:#FAF6EC;
-    border-top:1px solid rgba(250,246,236,0.14);
-    box-shadow:0 -8px 24px -12px rgba(0,0,0,0.4);
-  }
-  .cookie-bar-inner{
-    display:flex; align-items:center; gap:18px; flex-wrap:wrap;
-    padding-block:16px;
-  }
-  .cookie-bar p{
-    margin:0; font-size:13.5px; color:rgba(250,246,236,0.82); flex:1; min-width:220px; line-height:1.5;
-  }
-  .cookie-bar p a{color:#FAF6EC; text-decoration:underline;}
-  .cookie-bar .btn{
-    display:inline-flex; align-items:center; gap:9px; flex:none;
-    font-family:'Poppins',sans-serif; font-size:14.5px; font-weight:600;
-    padding:13px 22px; border-radius:99px; text-decoration:none; border:1.5px solid transparent;
-    cursor:pointer; background:var(--rosso); color:#FFFFFF;
-  }
-  @media (max-width:520px){
-    .cookie-bar-inner{flex-direction:column; align-items:stretch;}
-    .cookie-bar .btn{width:100%; justify-content:center;}
-  }
-</style>
-</head>
+<link rel="stylesheet" href="assets/css/styles.css"></head>
 <body>
 
 <div class="topbar">
@@ -291,7 +115,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="footer-bottom">
+    <div class="legal-footer-bottom">
       <span>© 2026 Ragù Italian Bistro, Preston.</span>
       <a href="index.html">Back to the homepage</a>
     </div>
@@ -301,29 +125,11 @@
 <div id="cookieBar" class="cookie-bar" role="region" aria-label="Cookie notice" hidden>
   <div class="cookie-bar-inner wrap">
     <p>This site uses only technical elements essential to its operation — no analytics or marketing cookies are active right now. This page explains exactly how.</p>
-    <button type="button" id="cookieOk" class="btn">Got it</button>
+    <button type="button" id="cookieOk" class="btn btn-primary cookie-ok">Got it</button>
   </div>
 </div>
 
-<script>
-(function(){
-  var COOKIE_STORAGE_KEY = 'raguCookieNoticeSeen';
-  var bar = document.getElementById('cookieBar');
-  var okBtn = document.getElementById('cookieOk');
-  if (!bar || !okBtn) return;
-
-  try {
-    if (!localStorage.getItem(COOKIE_STORAGE_KEY)) bar.hidden = false;
-  } catch (e) {
-    bar.hidden = false;
-  }
-
-  okBtn.addEventListener('click', function(){
-    bar.hidden = true;
-    try { localStorage.setItem(COOKIE_STORAGE_KEY, 'acknowledged'); } catch (e) {}
-  });
-})();
-</script>
+<script src="assets/js/cookie-consent.js"></script>
 
 </body>
 </html>

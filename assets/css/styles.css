@@ -18,6 +18,7 @@
  *  14. Footer
  *  15. Cookie notice bar
  *  16. Reveal-on-scroll animation
+ *  17. Privacy policy page
  * ---------------------------------------------------------------------
  */
 
@@ -524,3 +525,49 @@
     opacity:1;
     transform:translateY(0);
   }
+
+  /* ---------- privacy policy page ---------- */
+  .topbar .back{
+    margin-left:auto; font-size:14px; font-weight:500; color:var(--ink-soft); text-decoration:none;
+    display:flex; align-items:center; gap:6px;
+  }
+  .topbar .back:hover{color:var(--ink);}
+  .topbar .back svg{width:15px; height:15px;}
+
+  .legal-hero{padding-block:clamp(40px,7vw,64px) 8px;}
+  .legal-hero h1{font-weight:300; font-size:clamp(28px,4.6vw,42px); letter-spacing:-.01em; margin-bottom:10px;}
+  .legal-hero h1 b{font-weight:700; font-style:normal;}
+  .legal-hero p.updated{font-size:13.5px; color:var(--ink-soft); margin:0;}
+
+  .legal-body{padding-block:8px clamp(56px,8vw,88px);}
+  .legal-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:clamp(24px,4vw,40px); display:flex; flex-direction:column; gap:30px;
+  }
+  .legal-card section h2{
+    font-size:18px; font-weight:600; margin-bottom:10px; display:flex; align-items:center; gap:10px;
+  }
+  .legal-card section h2 .num{
+    font-size:12px; font-weight:700; color:var(--rosso); background:var(--rosso-tint);
+    width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex:none;
+  }
+  .legal-card section p{font-size:14.5px; color:var(--ink-soft); margin:0 0 10px;}
+  .legal-card section p:last-child{margin-bottom:0;}
+  .legal-card section ul{margin:0 0 10px; padding-left:20px; font-size:14.5px; color:var(--ink-soft);}
+  .legal-card section li{margin-bottom:6px;}
+  .legal-card section a{color:var(--rosso); text-decoration:underline; font-weight:500;}
+  .legal-card strong{color:var(--ink); font-weight:600;}
+  .legal-card hr{border:none; border-top:1px solid var(--line-soft); margin:0;}
+
+  .contact-strip{
+    background:var(--surface-2); border:1px solid var(--line-soft); border-radius:var(--radius);
+    padding:18px 20px; font-size:14px; color:var(--ink-soft); display:flex; flex-direction:column; gap:4px;
+  }
+  .contact-strip strong{color:var(--ink);}
+
+  .legal-footer-bottom{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-size:12.5px; color:rgba(250,246,236,0.45);
+  }
+  .legal-footer-bottom a{color:inherit; text-decoration:underline;}
+  .legal-footer-bottom a:hover{color:rgba(250,246,236,0.8);}
