@@ -13,6 +13,12 @@ Condensato dei due audit SEO fatti finora (22 e 23 settembre 2026, punteggio 62/
 - Nessun file generato da macOS (`.DS_Store`) va committato — c'è un `.gitignore` apposta.
 - `privacy.html` non ha più CSS/JS inline: ora carica `assets/css/styles.css` (sezione 17, "Privacy policy page") e `assets/js/cookie-consent.js`, come le altre pagine. Di conseguenza `_headers` applica la stessa CSP stretta di `index.html` anche a `/privacy.html` (24/09/2026, fix in locale, in attesa di push).
 - Verificato (24/09/2026): nessun crawler AI è bloccato da `robots.txt` (`User-agent: * / Allow: /` copre anche GPTBot, OAI-SearchBot, ClaudeBot, Claude-SearchBot, PerplexityBot, Google-Extended, ecc. — non serve aggiungere righe dedicate). Il sito è inoltre interamente statico e renderizzato lato server: nessun contenuto dipende da JavaScript per essere visibile ai crawler. Due punti di forza confermati, nessuna azione da fare.
+- Le 7 foto usate in `index.html` hanno ora anche una versione WebP servita via `<picture>` (fallback JPEG automatico) — -21% di peso scaricato da un browser moderno. Manca ancora AVIF (nessun encoder disponibile in locale) e lo `srcset` responsive multi-risoluzione: miglioria ulteriore possibile, non urgente.
+- Cache-Control su `/assets/*` alzata da 1 ora a 7 giorni (`stale-while-revalidate` 30 giorni).
+- Preload dei due pesi Poppins più usati (400 e 600) in `index.html` per velocizzare la comparsa del testo. La catena di 9 file font resta invariata (ridurla richiederebbe eliminare pesi non usati o un font variabile — intervento più corposo, non fatto).
+- Il menu mobile (`assets/js/nav.js`) ora sposta il focus al suo interno all'apertura (con focus trap su Tab/Shift+Tab) e lo riporta sul pulsante hamburger alla chiusura. Aggiunto anche un link "Skip to content" a inizio pagina.
+- `llms.txt` riformattato secondo lo standard proposto (titolo, sommario, sezioni con link in formato markdown) — stessi dati di prima, solo formato corretto.
+- Tutti i fix sopra: 24/09/2026, in locale, in attesa di push.
 
 ## Ancora aperto — azioni esterne (non risolvibili da codice)
 - Google Business Profile non ancora confermata/collegata — il fattore singolo più pesante per il local ranking.
@@ -28,14 +34,8 @@ Condensato dei due audit SEO fatti finora (22 e 23 settembre 2026, punteggio 62/
 - Un vero sistema di prenotazione online (oggi solo telefono in orario di apertura).
 - Forma societaria/stato IVA (vedi `docs/normative-uk.md`).
 
-## Ancora aperto — accessibilità, interventi di codice piccoli e a basso rischio
-- Il menu mobile (`assets/js/nav.js`), aperto da tastiera, non sposta il focus dentro il pannello e non lo riporta sul pulsante hamburger alla chiusura (niente focus trap) — problema reale per chi naviga senza mouse, non solo teorico.
-- Manca un link "skip to content" a inizio pagina per chi usa tastiera o screen reader e vuole saltare la navigazione.
-- Individuati durante la revisione del 24/09/2026, non ancora presenti nei due audit SEO precedenti.
-
 ## Ancora aperto — readiness per motori/agenti AI (GEO, revisione 24/09/2026)
-- Manca un paragrafo "definitorio" e autosufficiente in cima alla pagina (formato risposta diretta, circa 130-170 parole, es. "Ragù Italian Bistro è un ristorante napoletano a Preston che serve...") che un motore AI possa citare senza altro contesto. Oggi il testo più vicino a questo è nella sezione "Our story", più in basso nella pagina — i modelli AI citano soprattutto il primo 30% della pagina.
-- `llms.txt` esiste ma non segue il formato standard proposto (manca la riga di descrizione con `>` e i link ai menù non sono in formato markdown `[nome](url): descrizione`). Impatto reale basso — Google dichiara esplicitamente di ignorare questo file per Search/AI Overviews — ma potrebbe aiutare altri crawler AI se ben formattato. Bassa priorità.
+- Manca un paragrafo "definitorio" e autosufficiente in cima alla pagina (formato risposta diretta, circa 130-170 parole, es. "Ragù Italian Bistro è un ristorante napoletano a Preston che serve...") che un motore AI possa citare senza altro contesto. Oggi il testo più vicino a questo è nella sezione "Our story", più in basso nella pagina — i modelli AI citano soprattutto il primo 30% della pagina. È una modifica di copy/tono di voce, da proporre a Ciro prima di pubblicarla, non solo tecnica.
 - Nessuna presenza del locale su Wikipedia/Reddit/YouTube/LinkedIn: secondo gli studi più recenti le menzioni del brand su queste piattaforme correlano con la citabilità nei motori AI più dei backlink classici (di cui si parla già sopra per l'articolo del Lancashire Post). Azione esterna, non di codice.
 - Il numero di telefono come unico canale di prenotazione diventa sempre meno "azionabile" per un agente AI, man mano che questi motori aggiungono prenotazioni automatizzate (es. Google AI Mode); rinforza — non sostituisce — il punto già aperto sopra "un vero sistema di prenotazione online".
 
@@ -43,8 +43,7 @@ Condensato dei due audit SEO fatti finora (22 e 23 settembre 2026, punteggio 62/
 - Pubblicare i 4 menù PDF come HTML completo (il clone Word editabile è già pronto, vedi Project) — include il menù bambini, che nel PDF originale non ha quasi testo estraibile.
 - Date e citazioni dirette dagli articoli di stampa nella sezione Press.
 - Blocco FAQ risposta-diretta (5-6 domande tipo "A che ora apre Ragù Preston stasera?").
-- Lavorare la frase di ricerca locale principale ("Italian restaurant" + nome del locale) in title e H1 (oggi solo nel footer).
-- Cambiare `sameAs` da Messenger a una vera Facebook Page, quando esiste.
-- Immagini ancora in JPEG classico, nessun WebP/AVIF né srcset responsive — 96% del peso pagina, causa diretta di un LCP mobile di 5.0s (soglia: 2.5s). Cache immagini a 1 ora invece di long-lived.
-- CSS che blocca il first paint + catena di 9 font woff2 (Poppins in 8 pesi + Baloo 2) caricati in parallelo, nessun `<link rel="preload">` sui pesi critici.
-- 4 PDF dei menù pesanti (816KB–1.9MB l'uno) — da valutare una compressione, con attenzione a non perdere leggibilità.
+- Lavorare la frase di ricerca locale principale ("Italian restaurant" + nome del locale) nell'H1 (oggi già presente nel `<title>`, non ancora nell'H1 della hero — anche questo è copy, da proporre a Ciro).
+- Cambiare `sameAs` da Messenger a una vera Facebook Page, quando esiste (serve sapere se/quando la pagina Facebook vera viene creata).
+- AVIF e `srcset` responsive multi-risoluzione per le immagini (oltre al WebP già fatto) — miglioria ulteriore, non urgente.
+- 4 PDF dei menù pesanti (816KB–1.9MB l'uno) — da comprimere, ma serve un tool (Ghostscript o qpdf) non ancora installato in locale, e va verificato che il testo resti leggibile e i prezzi/allergeni accurati dopo la compressione.
