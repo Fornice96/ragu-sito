@@ -25,12 +25,12 @@ Condensato dei due audit SEO fatti finora (22 e 23 settembre 2026, punteggio 62/
 - Tutti i fix sopra: 24/09/2026, pushati su main.
 
 ## Ancora aperto — azioni esterne (non risolvibili da codice)
-- Google Business Profile non ancora confermata/collegata — il fattore singolo più pesante per il local ranking.
-- Zero recensioni visibili ovunque (sito, GBP, directory) — serve un processo di raccolta (QR code, richiesta post-visita).
+- **RISOLTO (27/09/2026), da tenere aggiornato**: Google Business Profile è confermata e va bene — **4.9★ su 63 recensioni** (verificato via dato live Google Maps). Il campo "sito web" sulla scheda GBP risulta però **vuoto** — azione da fare dalla dashboard Google Business Profile (non da codice): aggiungere l'URL del sito. Aggiunto anche il link della scheda Maps (`place_id:ChIJZ8pchPhze0gRqN9NuaBxHac`) al `sameAs` dello schema.org in `index.html`.
+- **RISOLTO (27/09/2026)**: non più "zero recensioni" — oltre a Google (63, 4.9★), anche la Pagina Facebook mostra **13 recensioni, 100% positive**, e Uber Eats **4.7★ su 8**. Nessuna di queste è oggi visibile sul sito stesso: valutare se mostrare questi numeri come riprova sociale (es. vicino alla sezione Press o nelle quickfacts dell'hero) — attenzione però che sono dati "vivi" che cambiano nel tempo, se finiscono scritti a mano in `index.html` vanno aggiunti alla lista dei dati duplicati in `CLAUDE.md` e riverificati periodicamente.
 - Nessun dominio personalizzato — il sito gira su un sottodominio netlify.app gratuito.
-- Il sito non compare nella propria ricerca brand-name (battuto da stampa/social) — conseguenza diretta dei tre punti sopra.
+- Il sito non compare nella propria ricerca brand-name (battuto da stampa/social) — conseguenza diretta del punto sopra sul dominio.
 - Nessun backlink dall'articolo del Lancashire Post — da richiedere.
-- Badge di attribuzione Netlify — si disattiva solo dalla dashboard Netlify (Site configuration → General), non da codice.
+- Badge di attribuzione Netlify — si disattiva solo dalla dashboard Netlify (Site configuration → General), non da codice. Genera anche uno script iniettato automaticamente in ogni pagina servita (`/.netlify/scripts/hud`) che prova ad aggiungere stile/script inline — bloccato dalla CSP del sito (comportamento innocuo, il sito non ne risente, ma spiega i due errori CSP che si vedono in console su ogni pagina in produzione).
 
 ## Ancora aperto — serve info vera da Vincenzo (non inventare)
 - Credenziali/background dei due chef (formazione, esperienza) per rafforzare l'E-E-A-T.
