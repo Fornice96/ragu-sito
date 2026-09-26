@@ -36,3 +36,12 @@ Il progetto Netlify (`ragu-italian-bistrot`, piano Free del team `fornice96`) us
 - **Grafia del brand: "Bistro" ovunque** (non "Bistrot"), decisione di Ciro del 23/09/2026. Il dominio temporaneo `ragu-italian-bistrot.netlify.app` resta così com'è per ora, ma un futuro dominio proprio va scelto con "bistro", non "bistrot".
 - Orari attuali (verificare comunque con Ciro/Vincenzo prima di usarli in un contenuto pubblico, possono cambiare): aperto tutti i giorni, 12:00–20:00 lunedì–giovedì e domenica, 12:00–21:00 venerdì–sabato.
 - Ogni dato del locale (orari, menù, prezzi, food hygiene rating) va riverificato al momento dell'uso, non dato per scontato da una sessione precedente.
+
+## 6. Dati duplicati — da controllare tutti insieme quando uno cambia
+Il sito non ha componenti/template condivisi (coerente col punto "nessun build step"), quindi questi dati sono copiati a mano in più file. Prima di modificarne uno, cerca TUTTE le occorrenze con un grep su `*.html` (es. `grep -rn "7922958745" *.html`) e aggiornale insieme, non fidarti di cambiarne solo una:
+- **Telefono** (`+447922958745` / `+44 7922 958745`): 12 occorrenze tra `index.html` (topbar, hero, mobile action bar, mobile nav, sezione "Find us", footer, JSON-LD `telephone`), `404.html` (CTA + footer) e `privacy.html` (sezione 1 + contatti finali).
+- **Link Pagina Facebook** (`facebook.com/profile.php?id=...`): 4 occorrenze tra `index.html` (JSON-LD `sameAs`, mobile nav, footer) e `404.html` (footer). È l'URL numerico di default — quando Vincenzo/Luca impostano uno username personalizzato su Facebook, aggiornalo in tutti e 4 i punti (vedi anche `docs/seo-audit-riferimento.md`).
+- **Prezzi e piatti del menu**: il blocco JSON-LD `Menu` in `index.html` (righe ~74-122) e la griglia "assaggio" (`dish-grid`) più sotto nello stesso file devono restare identici ai 4 PDF veri in `assets/*.pdf`, che sono la fonte di verità reale.
+- **Indirizzo** (5–7 Guildhall Street, Preston PR1 3NU): ~20 occorrenze sparse su tutti e 3 i file — meno soggetto a cambiare, ma se succede va comunque cercato ovunque.
+
+Se in futuro nasce un nuovo dato ripetuto in più punti (nuovo orario, nuovo canale social, nuovo numero), aggiungilo a questa lista appena te ne accorgi.
