@@ -1,6 +1,6 @@
 # Riferimento SEO — problemi noti (da non reintrodurre) e punti ancora aperti
 
-Condensato dei due audit SEO fatti finora (22 e 23 settembre 2026, punteggio 62/100 poi 67/100). Il report completo di ciascuno resta nel Project "Ragu Italian Bistrot" su claude.ai (`claude/seo-audit-settembre-2026.md`) — qui solo l'essenziale per non perdere il filo lavorando da questo repository.
+Condensato dei tre audit SEO fatti finora (22, 23 e 27 settembre 2026, punteggio 62/100 → 67/100 → 84/100). Il report completo dei primi due resta nel Project "Ragu Italian Bistrot" su claude.ai (`claude/seo-audit-settembre-2026.md`); il terzo (basato sui file locali di questo repository, non ancora pushato) è salvato come PDF in `Claude outputs/Audit SEO - sito Ragu - 2026-09-27.pdf` — qui solo l'essenziale per non perdere il filo lavorando da questo repository.
 
 ## Già risolto — attenzione a non reintrodurlo per sbaglio
 - Il dominio corretto è `ragu-italian-bistrot.netlify.app` (non il vecchio `dashing-dolphin-1b1c28.netlify.app`, morto) — controllare sempre og:url, og:image, twitter:image, `url`/`image` nello schema.org, sitemap.xml, robots.txt se si tocca uno di questi.
@@ -23,6 +23,12 @@ Condensato dei due audit SEO fatti finora (22 e 23 settembre 2026, punteggio 62/
 - Il primo paragrafo di "Our story" ora apre con una frase autosufficiente e citabile (chi siamo, dove, cosa serviamo) prima di raccontare la storia dei due chef, per i motori di ricerca AI che privilegiano risposte dirette nel primo 30% della pagina. Nessun dato nuovo, solo fatti già presenti altrove sul sito.
 - Frase di ricerca locale principale ("Italian restaurant" + nome del locale): già presente nel `<title>` ("Ragù Italian Bistro | Neapolitan Restaurant in Preston"), che è il segnale che conta di più. Deciso di **non** toccare anche l'H1 della hero ("Real Neapolitan cooking, in the heart of Preston.") solo per infilarci la parola "restaurant": guadagno SEO marginale contro il rischio di appiattire un H1 scritto con cura (24/09/2026).
 - Tutti i fix sopra: 24/09/2026, pushati su main.
+
+## Ancora aperto — trovato nell'audit del 27/09/2026, correzioni semplici
+- `404.html` non ha un `<h1>` — salta direttamente a `<h2>This page went out for the day.</h2>`. Pagina `noindex` quindi impatto SEO nullo, ma rompe la gerarchia dei titoli per l'accessibilità.
+- `og:type` nello `<head>` di `index.html` è `"restaurant"`, che non è un tipo Open Graph valido nella spec base (servirebbe il namespace esteso `restaurant.restaurant`, oppure restare su `"website"`). I parser social lo ignorano silenziosamente, nessun danno visibile ma non è corretto.
+- `sitemap.xml` ha `<lastmod>2026-09-22</lastmod>`, ormai indietro rispetto alle modifiche successive (PDF menù, schema Maps, gallery). Da aggiornare alla data dell'effettivo push.
+- Nota positiva dello stesso audit: la gallery è passata da 5 a 9 foto (commit `6ab4a43`, 27/09) includendo finalmente un drink e il piatto lodato dalla recensione di Blog Preston — stesso standard delle altre (WebP, alt text descrittivo, dimensioni corrette).
 
 ## Ancora aperto — azioni esterne (non risolvibili da codice)
 - **RISOLTO (27/09/2026), da tenere aggiornato**: Google Business Profile è confermata e va bene — **4.9★ su 63 recensioni** (verificato via dato live Google Maps). Il campo "sito web" sulla scheda GBP risulta però **vuoto** — azione da fare dalla dashboard Google Business Profile (non da codice): aggiungere l'URL del sito. Aggiunto anche il link della scheda Maps (`place_id:ChIJZ8pchPhze0gRqN9NuaBxHac`) al `sameAs` dello schema.org in `index.html`.
