@@ -24,11 +24,12 @@ Condensato dei tre audit SEO fatti finora (22, 23 e 27 settembre 2026, punteggio
 - Frase di ricerca locale principale ("Italian restaurant" + nome del locale): già presente nel `<title>` ("Ragù Italian Bistro | Neapolitan Restaurant in Preston"), che è il segnale che conta di più. Deciso di **non** toccare anche l'H1 della hero ("Real Neapolitan cooking, in the heart of Preston.") solo per infilarci la parola "restaurant": guadagno SEO marginale contro il rischio di appiattire un H1 scritto con cura (24/09/2026).
 - Tutti i fix sopra: 24/09/2026, pushati su main.
 
-## Ancora aperto — trovato nell'audit del 27/09/2026, correzioni semplici
-- `404.html` non ha un `<h1>` — salta direttamente a `<h2>This page went out for the day.</h2>`. Pagina `noindex` quindi impatto SEO nullo, ma rompe la gerarchia dei titoli per l'accessibilità.
-- `og:type` nello `<head>` di `index.html` è `"restaurant"`, che non è un tipo Open Graph valido nella spec base (servirebbe il namespace esteso `restaurant.restaurant`, oppure restare su `"website"`). I parser social lo ignorano silenziosamente, nessun danno visibile ma non è corretto.
-- `sitemap.xml` ha `<lastmod>2026-09-22</lastmod>`, ormai indietro rispetto alle modifiche successive (PDF menù, schema Maps, gallery). Da aggiornare alla data dell'effettivo push.
-- Nota positiva dello stesso audit: la gallery è passata da 5 a 9 foto (commit `6ab4a43`, 27/09) includendo finalmente un drink e il piatto lodato dalla recensione di Blog Preston — stesso standard delle altre (WebP, alt text descrittivo, dimensioni corrette).
+## Ancora aperto — trovato nell'audit del 27/09/2026
+- Nota positiva: la gallery è passata da 5 a 9 foto (commit `6ab4a43`, 27/09) includendo finalmente un drink e il piatto lodato dalla recensione di Blog Preston — stesso standard delle altre (WebP, alt text descrittivo, dimensioni corrette).
+- **RISOLTO (27/09/2026, commit `54fa4f9`)**: `404.html` non aveva un `<h1>` (saltava a `<h2>`) — ora è `<h1>`, stile invariato (selettore CSS `.narrative-card` aggiornato per coprire sia h1 che h2, visto che la stessa card è anche un h2 in `index.html`).
+- **RISOLTO (27/09/2026, commit `54fa4f9`)**: `og:type` era `"restaurant"` (non valido nella spec Open Graph base) — ora `"website"`.
+- **RISOLTO (27/09/2026, commit `54fa4f9`)**: `sitemap.xml` aveva `<lastmod>` fermo al 22/09 — aggiornato al 27/09.
+- **Facoltativo, non fatto**: meta description homepage a 128 caratteri, sotto il range ideale 150–160 — spazio SERP non sfruttato del tutto. `og:image`/`twitter:image` (foto6.jpg, 1069×716, rapporto 1.49:1) più "quadrata" del rapporto 1.91:1 raccomandato per le anteprime social (1200×630) — Facebook/Twitter possono ritagliarla in modo meno ideale. Entrambi da valutare con Ciro prima di toccare copy/immagini pensate con cura.
 
 ## Ancora aperto — azioni esterne (non risolvibili da codice)
 - **RISOLTO (27/09/2026), da tenere aggiornato**: Google Business Profile è confermata e va bene — **4.9★ su 63 recensioni** (verificato via dato live Google Maps). Il campo "sito web" sulla scheda GBP risulta però **vuoto** — azione da fare dalla dashboard Google Business Profile (non da codice): aggiungere l'URL del sito. Aggiunto anche il link della scheda Maps (`place_id:ChIJZ8pchPhze0gRqN9NuaBxHac`) al `sameAs` dello schema.org in `index.html`.
