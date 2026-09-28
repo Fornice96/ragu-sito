@@ -43,6 +43,7 @@ Il sito non ha componenti/template condivisi (coerente col punto "nessun build s
 - **Link Pagina Facebook** (`facebook.com/profile.php?id=...`): 4 occorrenze tra `index.html` (JSON-LD `sameAs`, mobile nav, footer) e `404.html` (footer). È l'URL numerico di default — quando Vincenzo/Luca impostano uno username personalizzato su Facebook, aggiornalo in tutti e 4 i punti (vedi anche `docs/seo-audit-riferimento.md`).
 - **Prezzi e piatti del menu**: il blocco JSON-LD `Menu` in `index.html` (righe ~74-122) e la griglia "assaggio" (`dish-grid`) più sotto nello stesso file devono restare identici ai 4 PDF veri in `assets/*.pdf`, che sono la fonte di verità reale.
 - **Colore barra del browser** (`<meta name="theme-color" content="#231F20">`, antracite del marchio) e **logo bianco della topbar** (`assets/logo-compatto-bianco.svg`): 3 occorrenze ciascuno, in testa a `index.html`, `404.html` e `privacy.html`.
+- **Versione del CSS** (`styles.css?v=AAAAMMGG` nel `<link>`): 3 occorrenze, in testa a `index.html`, `404.html` e `privacy.html`. Va cambiata in tutti e 3 a ogni modifica di `styles.css`, altrimenti i browser continuano a usare la copia vecchia fino a 7 giorni (`/assets/*` ha `max-age=604800` in `_headers`).
 - **Indirizzo** (5–7 Guildhall Street, Preston PR1 3NU): ~20 occorrenze sparse su tutti e 3 i file — meno soggetto a cambiare, ma se succede va comunque cercato ovunque.
 
 Se in futuro nasce un nuovo dato ripetuto in più punti (nuovo orario, nuovo canale social, nuovo numero), aggiungilo a questa lista appena te ne accorgi.
