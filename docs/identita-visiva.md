@@ -12,6 +12,7 @@ Loghi e palette estratti dai PDF originali dei menù (settembre 2026). I file or
 | `ragu-logo-negativo-bianco.svg` | Stesso logo con la scritta bianca | Sfondi scuri o sopra le foto |
 | `ragu-wordmark.svg` | Solo RAGÙ con la foglia | Quando serve il marchio senza la riga descrittiva |
 | `ragu-logo-compatto.svg` | Versione ridotta usata nelle testate dei menù | Intestazioni, carta intestata, firme email |
+| `logo-compatto-bianco.svg` (solo in `assets/` del sito) | Compatto con la scritta bianca, bandierine invariate | Topbar antracite del sito |
 | `ragu-logo-kids.png` | Logo illustrato del Kids Menu (solo raster) | Contenuti per famiglie e bambini |
 
 Ogni logo vettoriale esiste in **.svg** (scalabile, da preferire), **.pdf** (stampa) e **.png a 600 dpi con sfondo trasparente**. Il principale ha anche PNG su fondo bianco e una versione a 150 dpi per il web.
