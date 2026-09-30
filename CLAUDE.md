@@ -28,8 +28,10 @@ Per una correzione piccola e ovvia (un refuso, un colore, un testo) si può inte
 
 ## 4. Hosting: Cloudflare
 Dal 30/09/2026 il sito è pubblicato da **Cloudflare** (Workers con asset statici, progetto `ragu-sito`, account di Ciro) su `https://ragu-sito.fornice.workers.dev`, in attesa di un dominio proprio. Netlify è stato dismesso perché col piano Free a crediti (15 crediti a deploy, 300/mese) si esaurivano in pochi push.
-- Ogni push su `main` viene pubblicato da Cloudflare gratuitamente, senza limiti di numero. Sul piano Free la build può restare in coda anche ~10 minuti prima di partire: se il sito non si aggiorna subito, controllare in dashboard → Workers & Pages → `ragu-sito` → Distribuzioni prima di pensare a un errore.
-- `wrangler.jsonc` è la configurazione del progetto (pagina 404 per gli indirizzi inesistenti). `.assetsignore` tiene fuori dal sito pubblico i file interni (`.git`, `CLAUDE.md`, `docs/`, la config): se aggiungi file solo "di lavoro" alla radice, aggiungili lì.
+- Ogni push su `main` viene pubblicato gratuitamente da **GitHub Actions** (`.github/workflows/deploy.yml`, `npx wrangler@4.145.0 deploy`): push → online in ~30 secondi. Le build Git di Cloudflare sono **disconnesse** apposta: sul piano Free restavano ~10 minuti in coda ("Initializing build environment"). Non ricollegarle, o ogni push verrebbe pubblicato due volte.
+- Il deploy usa il secret `CLOUDFLARE_API_TOKEN` del repository (token Cloudflare "Edit Cloudflare Workers"). Se un deploy fallisce, l'errore compare come annotazione dell'esecuzione in Actions (leggibile anche via API pubblica, senza login). Modificare i file in `.github/workflows/` richiede che il token git del Mac abbia il permesso `workflow`.
+- Si può anche rilanciare a mano da GitHub → Actions → "Deploy to Cloudflare" → Run workflow.
+- `wrangler.jsonc` è la configurazione del progetto (pagina 404 per gli indirizzi inesistenti). `.assetsignore` tiene fuori dal sito pubblico i file interni (`.git`, `.github`, `CLAUDE.md`, `docs/`, la config): se aggiungi file solo "di lavoro" alla radice, aggiungili lì.
 - `_headers` funziona come su Netlify. Cloudflare serve le pagine senza `.html` (`/privacy`, non `/privacy.html`): le regole in `_headers` e i canonical vanno scritti così.
 - Il push resta comunque da chiedere a Ciro (punto 3).
 
