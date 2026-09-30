@@ -348,19 +348,28 @@
 
   /* ---------- story photo grid (doubles as "gallery") ---------- */
   .story-gallery{margin-top:48px;}
-  /* Strip that scrolls on its own (gallery.js clones the photos and adds
-     .is-moving); without JS or with "reduce motion" it's a row you swipe. */
+  /* A swipeable row; gallery.js makes it loop, scroll on its own and
+     shows the ‹ › buttons. Without JS it's still a row you swipe by hand. */
+  .story-gallery{position:relative;}
   .gallery-strip{overflow-x:auto; padding:4px 0 10px;}
   .gallery-strip.is-moving{
-    overflow:hidden;
+    scrollbar-width:none;
     -webkit-mask-image:linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
             mask-image:linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
   }
+  .gallery-strip.is-moving::-webkit-scrollbar{display:none;}
   .gallery-track{display:flex; gap:12px; width:max-content;}
-  .is-moving .gallery-track{animation:gallery-scroll 70s linear infinite;}
-  .is-moving:hover .gallery-track, .is-moving:focus-within .gallery-track{animation-play-state:paused;}
-  /* the track holds the photos twice: shifting by half (+ half a gap) loops seamlessly */
-  @keyframes gallery-scroll{to{transform:translateX(calc(-50% - 6px));}}
+  .gallery-btn{
+    position:absolute; top:144px; transform:translateY(-50%); z-index:1;
+    width:44px; height:44px; border-radius:50%; border:none; cursor:pointer;
+    background:rgba(35,31,32,0.72); color:#FFFFFF; font-size:26px; line-height:1;
+    display:grid; place-items:center; box-shadow:var(--shadow);
+  }
+  .gallery-btn[hidden]{display:none;}
+  .gallery-btn:hover{background:rgba(35,31,32,0.9);}
+  .gallery-btn:focus-visible{outline:2px solid var(--rosso); outline-offset:2px;}
+  .gallery-btn[data-dir="prev"]{left:8px;}
+  .gallery-btn[data-dir="next"]{right:8px;}
   .gallery-track a{
     flex:none; height:280px; border-radius:var(--radius); overflow:hidden;
     box-shadow:var(--shadow); border:1px solid var(--line); display:block;
@@ -370,6 +379,7 @@
   .gallery-track a:hover img{transform:scale(1.05);}
   @media (max-width:640px){
     .gallery-track a{height:200px;}
+    .gallery-btn{top:104px; width:38px; height:38px; font-size:22px;}
   }
   .gallery-note{margin-top:16px; font-size:12.5px; color:var(--ink-soft);}
   .gallery-note a{color:var(--rosso); font-weight:600; text-decoration:none;}
