@@ -348,19 +348,28 @@
 
   /* ---------- story photo grid (doubles as "gallery") ---------- */
   .story-gallery{margin-top:48px;}
-  .gallery-grid{
-    display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:130px; gap:12px;
+  /* Strip that scrolls on its own (gallery.js clones the photos and adds
+     .is-moving); without JS or with "reduce motion" it's a row you swipe. */
+  .gallery-strip{overflow-x:auto; padding:4px 0 10px;}
+  .gallery-strip.is-moving{
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+            mask-image:linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
   }
-  .gallery-grid a{
-    border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line);
-    display:block; position:relative;
+  .gallery-track{display:flex; gap:12px; width:max-content;}
+  .is-moving .gallery-track{animation:gallery-scroll 70s linear infinite;}
+  .is-moving:hover .gallery-track, .is-moving:focus-within .gallery-track{animation-play-state:paused;}
+  /* the track holds the photos twice: shifting by half (+ half a gap) loops seamlessly */
+  @keyframes gallery-scroll{to{transform:translateX(calc(-50% - 6px));}}
+  .gallery-track a{
+    flex:none; height:280px; border-radius:var(--radius); overflow:hidden;
+    box-shadow:var(--shadow); border:1px solid var(--line); display:block;
   }
-  .gallery-grid img{width:100%; height:100%; object-fit:cover; transition:transform .35s ease;}
-  .gallery-grid a:hover img{transform:scale(1.05);}
-  .gallery-grid a.g-big{grid-column:span 2; grid-row:span 2;}
+  .gallery-track picture, .gallery-track img{display:block; height:100%;}
+  .gallery-track img{width:auto; transition:transform .35s ease;}
+  .gallery-track a:hover img{transform:scale(1.05);}
   @media (max-width:640px){
-    .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:120px;}
-    .gallery-grid a.g-big{grid-column:span 2; grid-row:span 2;}
+    .gallery-track a{height:200px;}
   }
   .gallery-note{margin-top:16px; font-size:12.5px; color:var(--ink-soft);}
   .gallery-note a{color:var(--rosso); font-weight:600; text-decoration:none;}

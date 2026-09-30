@@ -11,7 +11,7 @@ Il resto del progetto (pianificazione, contenuti social, menù di Natale, ricerc
 - `docs/seo-audit-riferimento.md` — problemi noti/aperti dai due audit SEO fatti finora (22 e 23 settembre 2026), da ricontrollare prima di ogni modifica strutturale per non reintrodurre un problema già segnalato
 
 ## 1. Struttura pulita, niente codice "alla buona" dentro l'HTML
-- Niente `<style>` o `<script>` scritti inline dentro `index.html` (o le altre pagine `.html`). Il CSS sta in `assets/css/styles.css`, il JavaScript in file separati sotto `assets/js/`, uno per responsabilità (`nav.js` per il menu mobile, `hours.js` per orari/stato aperto-chiuso, `reveal.js` per animazioni, `cookie-consent.js` per il banner cookie), ciascuno con un breve commento in cima che spiega cosa fa.
+- Niente `<style>` o `<script>` scritti inline dentro `index.html` (o le altre pagine `.html`). Il CSS sta in `assets/css/styles.css`, il JavaScript in file separati sotto `assets/js/`, uno per responsabilità (`nav.js` per il menu mobile, `hours.js` per orari/stato aperto-chiuso, `reveal.js` per animazioni, `gallery.js` per la galleria che scorre, `cookie-consent.js` per il banner cookie), ciascuno con un breve commento in cima che spiega cosa fa.
 - Niente attributi `style="..."` scritti a mano nei tag HTML: se serve uno stile puntuale, diventa una classe CSS vera, nel punto giusto del foglio di stile.
 - `assets/css/styles.css` ha un indice in testa (elenco delle sezioni) per orientarsi subito.
 - Codice moderno e coerente: `const`/`let` invece di `var`, funzioni commentate quando la logica non è ovvia a colpo d'occhio, nomi chiari.
