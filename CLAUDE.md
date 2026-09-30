@@ -3,7 +3,7 @@
 ## Contesto
 Sito del ristorante italiano di Vincenzo Gaglione (chef) e Luca Scognamiglio, entrambi di Napoli — cucina napoletana autentica, aperto dal 15 marzo 2026 a 5–7 Guildhall Street, Preston (UK), PR1 3NU. Vincenzo non è tecnico: ogni proposta che lo riguarda va spiegata in modo semplice. Ciro (il proprietario di questo repository) segue la parte online/digitale del locale.
 
-Sito statico, nessun build step: HTML/CSS/JS puro. Repository su GitHub, deploy automatico su Netlify a ogni push su `main`.
+Sito statico, nessun build step: HTML/CSS/JS puro. Repository su GitHub, pubblicazione automatica su Cloudflare a ogni push su `main` (vedi punto 4).
 
 Il resto del progetto (pianificazione, contenuti social, menù di Natale, ricerca competitor, roadmap generale) vive in un Project separato su claude.ai — questo repository copre solo la parte tecnica del sito. Riferimenti utili tenuti anche qui, per non dipendere da quel Project durante il lavoro di codice:
 - `docs/identita-visiva.md` — loghi, colori, font del marchio
@@ -26,14 +26,15 @@ Per una correzione piccola e ovvia (un refuso, un colore, un testo) si può inte
 - Ogni commit ha un messaggio che spiega cosa cambia e perché. Se è un refactor "invisibile" (nessun cambiamento visivo o di comportamento, solo pulizia del codice), dirlo esplicitamente nel messaggio di commit.
 - **Il push non va mai fatto di iniziativa (regola di Ciro): dopo ogni modifica committata chiedere esplicitamente "faccio il push?" e aspettare la risposta.** Ciro può rispondere no più volte di fila (le modifiche restano committate in locale, pronte) e dare l'ok in un momento a sua scelta — a quel punto si pusha tutto quello che si è accumulato in un colpo solo. Non dare per scontato un "sì" da un contesto precedente: chiederlo di nuovo ogni volta che c'è qualcosa di nuovo pronto.
 
-## 4. Risparmiare crediti Netlify
-Il progetto Netlify (`ragu-italian-bistrot`, piano Free del team `fornice96`) usa il sistema di billing a crediti: 300 crediti/mese, hard limit — se finiscono, il sito va in pausa e i visitatori vedono "Site not available". Ogni **deploy di produzione (push su `main`) costa 15 crediti**, indipendentemente da quanto è piccola la modifica; i **deploy preview/branch sono gratuiti e illimitati**. Di conseguenza:
-- Raggruppare più modifiche correlate in un solo commit/push, invece di pubblicare ogni piccola modifica separatamente (motivo pratico dietro la regola del punto 3).
-- Per una modifica rischiosa o su cui non si è sicuri al 100% nemmeno dopo il test in locale, si può pushare prima su un branch separato (deploy preview gratuito) per vedere il risultato vero su Netlify, e mergiare su `main` solo quando si è certi che va bene.
-- Se il sito risulta "in pausa" o irraggiungibile, la prima cosa da controllare è il saldo crediti sulla dashboard Netlify (Team settings → Billing).
+## 4. Hosting: Cloudflare
+Dal 30/09/2026 il sito è pubblicato da **Cloudflare** (Workers con asset statici, progetto `ragu-sito`, account di Ciro) su `https://ragu-sito.fornice.workers.dev`, in attesa di un dominio proprio. Netlify è stato dismesso perché col piano Free a crediti (15 crediti a deploy, 300/mese) si esaurivano in pochi push.
+- Ogni push su `main` viene pubblicato da Cloudflare gratuitamente, senza limiti di numero. Sul piano Free la build può restare in coda anche ~10 minuti prima di partire: se il sito non si aggiorna subito, controllare in dashboard → Workers & Pages → `ragu-sito` → Distribuzioni prima di pensare a un errore.
+- `wrangler.jsonc` è la configurazione del progetto (pagina 404 per gli indirizzi inesistenti). `.assetsignore` tiene fuori dal sito pubblico i file interni (`.git`, `CLAUDE.md`, `docs/`, la config): se aggiungi file solo "di lavoro" alla radice, aggiungili lì.
+- `_headers` funziona come su Netlify. Cloudflare serve le pagine senza `.html` (`/privacy`, non `/privacy.html`): le regole in `_headers` e i canonical vanno scritti così.
+- Il push resta comunque da chiedere a Ciro (punto 3).
 
 ## 5. Decisioni prese da tenere a mente
-- **Grafia del brand: "Bistro" ovunque** (non "Bistrot"), decisione di Ciro del 23/09/2026. Il dominio temporaneo `ragu-italian-bistrot.netlify.app` resta così com'è per ora, ma un futuro dominio proprio va scelto con "bistro", non "bistrot".
+- **Grafia del brand: "Bistro" ovunque** (non "Bistrot"), decisione di Ciro del 23/09/2026. Il futuro dominio proprio va scelto con "bistro", non "bistrot".
 - Orari attuali (verificare comunque con Ciro/Vincenzo prima di usarli in un contenuto pubblico, possono cambiare): aperto tutti i giorni, 12:00–20:00 lunedì–giovedì e domenica, 12:00–21:00 venerdì–sabato.
 - Ogni dato del locale (orari, menù, prezzi, food hygiene rating) va riverificato al momento dell'uso, non dato per scontato da una sessione precedente.
 
@@ -44,6 +45,7 @@ Il sito non ha componenti/template condivisi (coerente col punto "nessun build s
 - **Prezzi e piatti del menu**: il blocco JSON-LD `Menu` in `index.html` (righe ~74-122) e la griglia "assaggio" (`dish-grid`) più sotto nello stesso file devono restare identici ai 4 PDF veri in `assets/*.pdf`, che sono la fonte di verità reale.
 - **Colore barra del browser** (`<meta name="theme-color" content="#231F20">`, antracite del marchio) e **logo bianco della topbar** (`assets/logo-compatto-bianco.svg`): 3 occorrenze ciascuno, in testa a `index.html`, `404.html` e `privacy.html`.
 - **Versione del CSS** (`styles.css?v=AAAAMMGG` nel `<link>`): 3 occorrenze, in testa a `index.html`, `404.html` e `privacy.html`. Va cambiata in tutti e 3 a ogni modifica di `styles.css` (lettera finale se cambia due volte nello stesso giorno, es. `20260930b`; stessa cosa per `gallery.js?v=` in `index.html`), altrimenti i browser continuano a usare la copia vecchia fino a 7 giorni (`/assets/*` ha `max-age=604800` in `_headers`).
+- **Indirizzo del sito** (`https://ragu-sito.fornice.workers.dev`, provvisorio in attesa del dominio proprio): 24 occorrenze — `index.html` (15: canonical, og:url, og:image, twitter:image, JSON-LD `@id`/`url`/`logo`/`image`/`hasMenu`), `privacy.html` (canonical), `llms.txt` (6), `sitemap.xml`, `robots.txt` — più la prima riga di `docs/seo-audit-riferimento.md`. Cambiarle tutte insieme con un unico grep quando arriva il dominio.
 - **Indirizzo** (5–7 Guildhall Street, Preston PR1 3NU): ~20 occorrenze sparse su tutti e 3 i file — meno soggetto a cambiare, ma se succede va comunque cercato ovunque.
 
 Se in futuro nasce un nuovo dato ripetuto in più punti (nuovo orario, nuovo canale social, nuovo numero), aggiungilo a questa lista appena te ne accorgi.

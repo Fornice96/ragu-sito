@@ -3,13 +3,13 @@
 Condensato dei tre audit SEO fatti finora (22, 23 e 27 settembre 2026, punteggio 62/100 → 67/100 → 84/100). Il report completo dei primi due resta nel Project "Ragu Italian Bistrot" su claude.ai (`claude/seo-audit-settembre-2026.md`); il terzo (basato sui file locali di questo repository, non ancora pushato) è salvato come PDF in `Claude outputs/Audit SEO - sito Ragu - 2026-09-27.pdf` — qui solo l'essenziale per non perdere il filo lavorando da questo repository.
 
 ## Già risolto — attenzione a non reintrodurlo per sbaglio
-- Il dominio corretto è `ragu-italian-bistrot.netlify.app` (non il vecchio `dashing-dolphin-1b1c28.netlify.app`, morto) — controllare sempre og:url, og:image, twitter:image, `url`/`image` nello schema.org, sitemap.xml, robots.txt se si tocca uno di questi.
+- Il dominio corretto è `ragu-sito.fornice.workers.dev` (Cloudflare, dal 30/09/2026; prima `ragu-italian-bistrot.netlify.app`, dismesso, e ancora prima `dashing-dolphin-1b1c28.netlify.app`, morto) — controllare sempre og:url, og:image, twitter:image, `url`/`image` nello schema.org, sitemap.xml, robots.txt se si tocca uno di questi.
 - `<link rel="canonical">` deve restare su `index.html` e `privacy.html`.
-- Grafia del brand: **sempre "Bistro"**, mai "Bistrot" (decisione di Ciro, 23/09/2026) — vale per testo, meta tag, futuri contenuti. Il dominio netlify.app resta "bistrot" per ora (non cambiarlo da solo), ma un futuro dominio proprio va scelto con "bistro".
+- Grafia del brand: **sempre "Bistro"**, mai "Bistrot" (decisione di Ciro, 23/09/2026) — vale per testo, meta tag, futuri contenuti. Un futuro dominio proprio va scelto con "bistro".
 - Schema.org Restaurant: `acceptsReservations` è un booleano (`true`), non una stringa `"True"`. Presenti anche `@id`, `logo`, `foundingDate`, `hasMenu` (PDF + riferimento al blocco `Menu` con gli 8 piatti in HTML), `geo`, `sameAs`.
 - `sitemap.xml` non deve contenere pagine con `noindex` (es. non rimettere `privacy.html` in sitemap).
-- `_redirects` gestisce `/privacy` → `/privacy.html` (301) — non serve altro redirect per quello.
-- Header di sicurezza in `_headers`: CSP, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, HSTS (`Strict-Transport-Security`) — presenti su tutti e 4 i blocchi (`/`, `/index.html`, `/privacy.html`, `/assets/*`), non solo su uno.
+- `/privacy` lo serve Cloudflare da solo (e rimanda `/privacy.html` → `/privacy`): **non** rimettere un `_redirects` `/privacy` → `/privacy.html`, crea un loop infinito. Il canonical della privacy è `/privacy`.
+- Header di sicurezza in `_headers`: CSP, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, HSTS (`Strict-Transport-Security`) — presenti su tutti e 4 i blocchi (`/`, `/index.html`, `/privacy`, `/assets/*`), non solo su uno.
 - Nessun file generato da macOS (`.DS_Store`) va committato — c'è un `.gitignore` apposta.
 - `privacy.html` non ha più CSS/JS inline: ora carica `assets/css/styles.css` (sezione 17, "Privacy policy page") e `assets/js/cookie-consent.js`, come le altre pagine. Di conseguenza `_headers` applica la stessa CSP stretta di `index.html` anche a `/privacy.html` (24/09/2026).
 - Verificato (24/09/2026): nessun crawler AI è bloccato da `robots.txt` (`User-agent: * / Allow: /` copre anche GPTBot, OAI-SearchBot, ClaudeBot, Claude-SearchBot, PerplexityBot, Google-Extended, ecc. — non serve aggiungere righe dedicate). Il sito è inoltre interamente statico e renderizzato lato server: nessun contenuto dipende da JavaScript per essere visibile ai crawler. Due punti di forza confermati, nessuna azione da fare.
@@ -35,16 +35,15 @@ Condensato dei tre audit SEO fatti finora (22, 23 e 27 settembre 2026, punteggio
 ## Ancora aperto — azioni esterne (non risolvibili da codice)
 - **RISOLTO (27/09/2026), da tenere aggiornato**: Google Business Profile è confermata e va bene — **4.9★ su 63 recensioni** (verificato via dato live Google Maps). Il campo "sito web" sulla scheda GBP risulta però **vuoto** — azione da fare dalla dashboard Google Business Profile (non da codice): aggiungere l'URL del sito. Aggiunto anche il link della scheda Maps (`place_id:ChIJZ8pchPhze0gRqN9NuaBxHac`) al `sameAs` dello schema.org in `index.html`.
 - **RISOLTO (27/09/2026)**: non più "zero recensioni" — oltre a Google (63, 4.9★), anche la Pagina Facebook mostra **13 recensioni, 100% positive**, e Uber Eats **4.7★ su 8**. Nessuna di queste è oggi visibile sul sito stesso: valutare se mostrare questi numeri come riprova sociale (es. vicino alla sezione Press o nelle quickfacts dell'hero) — attenzione però che sono dati "vivi" che cambiano nel tempo, se finiscono scritti a mano in `index.html` vanno aggiunti alla lista dei dati duplicati in `CLAUDE.md` e riverificati periodicamente.
-- Nessun dominio personalizzato — il sito gira su un sottodominio netlify.app gratuito.
+- Nessun dominio personalizzato — il sito gira su un sottodominio workers.dev gratuito (Ciro sta per acquistarne uno: poi va aggiornato in tutti i punti elencati sopra).
 - Il sito non compare nella propria ricerca brand-name (battuto da stampa/social) — conseguenza diretta del punto sopra sul dominio.
 - Nessun backlink dall'articolo del Lancashire Post — da richiedere.
-- Badge di attribuzione Netlify — si disattiva solo dalla dashboard Netlify (Site configuration → General), non da codice. Genera anche uno script iniettato automaticamente in ogni pagina servita (`/.netlify/scripts/hud`) che prova ad aggiungere stile/script inline — bloccato dalla CSP del sito (comportamento innocuo, il sito non ne risente, ma spiega i due errori CSP che si vedono in console su ogni pagina in produzione).
 
 ## Ancora aperto — serve info vera da Vincenzo (non inventare)
 - Credenziali/background dei due chef (formazione, esperienza) per rafforzare l'E-E-A-T.
 - Contenuto FAQ pre-visita: parcheggio, accessibilità, policy di prenotazione, gruppi/eventi privati.
 - Un vero sistema di prenotazione online (oggi solo telefono in orario di apertura).
-- Forma societaria/stato IVA (vedi `docs/normative-uk.md`).
+- Stato IVA/VAT della società (la forma societaria è già confermata e la riga legale è online dal 30/09/2026; se registrata VAT, il numero va aggiunto nel footer e in `privacy.html` — vedi `docs/normative-uk.md`).
 
 ## Ancora aperto — readiness per motori/agenti AI (GEO, revisione 24/09/2026)
 - Nessuna presenza del locale su Wikipedia/Reddit/YouTube/LinkedIn: secondo gli studi più recenti le menzioni del brand su queste piattaforme correlano con la citabilità nei motori AI più dei backlink classici (di cui si parla già sopra per l'articolo del Lancashire Post). Azione esterna, non di codice.

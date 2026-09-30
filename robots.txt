@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ragu-italian-bistrot.netlify.app/sitemap.xml
+Sitemap: https://ragu-sito.fornice.workers.dev/sitemap.xml
