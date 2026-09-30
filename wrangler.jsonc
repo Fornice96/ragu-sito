@@ -1,0 +1,15 @@
+// Cloudflare Workers (static assets): the whole folder is the site.
+// not_found_handling serves 404.html for unknown paths; .assetsignore keeps
+// repo-only files (git, notes, this config) off the public site.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ragu-sito",
+  "compatibility_date": "2026-09-26",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    "not_found_handling": "404-page"
+  }
+}
