@@ -2,7 +2,7 @@
 
 Copia di riferimento per il lavoro sul sito — la fonte principale resta il Project "Ragu Italian Bistrot" su claude.ai, aggiornarla lì se cambia qualcosa.
 
-Loghi e palette estratti dai PDF originali dei menù (settembre 2026). I file originali stanno sul Mac di Ciro in `Documents/Ragù Italian Bistrot/Loghi/`; le versioni usate dal sito sono sotto `assets/` in questo repository (`logo-compatto.svg`, `logo-negativo-bianco.svg`, `apple-touch-icon.png`).
+Loghi e palette estratti dai PDF originali dei menù (settembre 2026). I file originali stanno sul Mac di Ciro in `Documents/Claude/Ragu Italian Bistrot/Loghi/`; le versioni usate dal sito sono sotto `assets/` in questo repository (`logo-compatto.svg`, `logo-negativo-bianco.svg`, `apple-touch-icon.png`).
 
 ## Loghi disponibili
 
