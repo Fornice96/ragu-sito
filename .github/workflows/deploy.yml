@@ -19,4 +19,6 @@ jobs:
       - uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          # the action defaults to Wrangler 3, which can't deploy an assets-only site
+          wranglerVersion: "4.145.0"
           command: deploy
