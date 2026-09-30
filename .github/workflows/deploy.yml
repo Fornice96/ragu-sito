@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       # Wrangler 4 straight from npm (the old wrangler-action defaulted to v3,
       # which can't deploy an assets-only site).
       - name: Deploy with Wrangler
