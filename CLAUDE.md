@@ -41,7 +41,7 @@ Dal 30/09/2026 il sito è pubblicato da **Cloudflare** (Workers con asset static
 - Ogni dato del locale (orari, menù, prezzi, food hygiene rating) va riverificato al momento dell'uso, non dato per scontato da una sessione precedente.
 
 - **Vincenzo e Luca sempre alla pari** in tutti i testi pubblici (sito, `llms.txt`, schema): niente "chef" davanti a uno solo, niente ruoli che mettono uno sopra l'altro. Richiesta dei titolari del 30/09/2026.
-- **Mappa = immagine fissa** (`assets/map-ragu.jpg/.webp`, generata da tile OpenStreetMap con il pin del locale; il clic apre Google Maps): niente iframe di Google in pagina, che può impostare cookie senza consenso (PECR, vedi `docs/normative-uk.md`). La scritta "© OpenStreetMap contributors" è obbligatoria per licenza, non toglierla. Citata anche nella privacy policy.
+- **Mappa = immagine fissa** (`assets/map-preston.jpg/.webp`, 1120×840, generata una volta con MapLibre + tile vettoriali OpenFreeMap ricolorate in stile Google, pin e nome del locale aggiunti sopra): il clic apre Google Maps. Niente iframe di Google in pagina, che può impostare cookie senza consenso (PECR, vedi `docs/normative-uk.md`). La scritta "© OpenMapTiles © OpenStreetMap contributors" è obbligatoria per licenza, non toglierla. Se va rigenerata, cambia nome al file (gli asset restano 7 giorni nella cache dei browser).
 - **`404.html` usa percorsi assoluti** (`/assets/...`, `/`): Cloudflare la mostra anche su indirizzi tipo `/menu/vecchio`, dove i percorsi relativi si romperebbero.
 
 ## 6. Dati duplicati — da controllare tutti insieme quando uno cambia
