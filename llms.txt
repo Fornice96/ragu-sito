@@ -1,6 +1,6 @@
 # Ragù Italian Bistro
 
-> Authentic Neapolitan restaurant at 5–7 Guildhall Street, Preston, PR1 3NU, United Kingdom. Run by chef Vincenzo Gaglione and Luca Scognamiglio, both from Naples, open since 15 March 2026. Cuisine: Neapolitan/Italian. Price range: ££. Phone: +44 7922 958745. Opening hours: every day 12:00–20:00, Friday and Saturday until 21:00. Food hygiene rating: Very Good.
+> Authentic Neapolitan restaurant at 5–7 Guildhall Street, Preston, PR1 3NU, United Kingdom. Run by Vincenzo Gaglione and Luca Scognamiglio, both from Naples, open since 15 March 2026. Cuisine: Neapolitan/Italian. Price range: ££. Phone: +44 7922 958745. Opening hours: every day 12:00–20:00, Friday and Saturday until 21:00. Food hygiene rating: Very Good.
 
 ## Menus
 - [À la carte](https://ragu-sito.fornice.workers.dev/assets/menu-a-la-carte.pdf): Antipasti, pizza, pasta, secondi and dolci — the full Neapolitan repertoire.

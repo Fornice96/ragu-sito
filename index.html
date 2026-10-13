@@ -121,7 +121,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="assets/css/styles.css?v=20260930b"></head><body>
+<link rel="stylesheet" href="assets/css/styles.css?v=20261013"></head><body>
 
 <a class="skip-link" href="#main-content">Skip to content</a>
 
@@ -435,8 +435,11 @@
       </div>
 
       <div class="map-card">
-        <div class="map-embed">
-          <iframe src="https://www.google.com/maps?q=Ragu+Italian+Bistro+5-7+Guildhall+Street+Preston+PR1+3NU&amp;output=embed" title="Map showing Ragù Italian Bistro at 5–7 Guildhall Street, Preston" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-embed" id="mapEmbed" data-src="https://www.google.com/maps?q=Ragu+Italian+Bistro+5-7+Guildhall+Street+Preston+PR1+3NU&amp;output=embed">
+          <button type="button" class="map-load" id="mapLoad">
+            <span class="map-load-title">Show the map</span>
+            <span class="map-load-note">Loads Google Maps, which may set its own cookies.</span>
+          </button>
         </div>
         <h3 class="map-card-title">Opening hours</h3>
         <table class="hours" id="hoursTable">
@@ -534,4 +537,6 @@
 <script src="assets/js/reveal.js"></script>
 
 <script src="assets/js/gallery.js?v=20260930b"></script>
+
+<script src="assets/js/map.js"></script>
 </body></html>
