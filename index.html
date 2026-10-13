@@ -121,7 +121,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="assets/css/styles.css?v=20261013"></head><body>
+<link rel="stylesheet" href="assets/css/styles.css?v=20261013b"></head><body>
 
 <a class="skip-link" href="#main-content">Skip to content</a>
 
@@ -435,11 +435,15 @@
       </div>
 
       <div class="map-card">
-        <div class="map-embed" id="mapEmbed" data-src="https://www.google.com/maps?q=Ragu+Italian+Bistro+5-7+Guildhall+Street+Preston+PR1+3NU&amp;output=embed">
-          <button type="button" class="map-load" id="mapLoad">
-            <span class="map-load-title">Show the map</span>
-            <span class="map-load-note">Loads Google Maps, which may set its own cookies.</span>
-          </button>
+        <div class="map-embed map-static">
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Ragu+Italian+Bistro+5-7+Guildhall+Street+Preston+PR1+3NU" target="_blank" rel="noopener" aria-label="Open Ragù Italian Bistro in Google Maps">
+            <picture>
+              <source type="image/webp" srcset="assets/map-ragu.webp">
+              <img src="assets/map-ragu.jpg" alt="Map of Preston city centre with Ragù Italian Bistro marked on Guildhall Street, near Fishergate and Winckley Square" width="800" height="600" loading="lazy" decoding="async">
+            </picture>
+            <span class="map-open">Open in Google Maps ↗</span>
+          </a>
+          <a class="map-credit" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a>
         </div>
         <h3 class="map-card-title">Opening hours</h3>
         <table class="hours" id="hoursTable">
@@ -537,6 +541,4 @@
 <script src="assets/js/reveal.js"></script>
 
 <script src="assets/js/gallery.js?v=20260930b"></script>
-
-<script src="assets/js/map.js"></script>
 </body></html>

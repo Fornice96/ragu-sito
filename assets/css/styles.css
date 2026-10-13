@@ -501,17 +501,20 @@
   }
   .map-embed{margin:-22px -22px 0; aspect-ratio:4/3; background:var(--surface-2);}
   .map-embed iframe{width:100%; height:100%; border:0; display:block;}
-  /* click-to-load placeholder: the Google map only loads after consent (PECR) */
-  .map-load{
-    width:100%; height:100%; border:0; cursor:pointer; padding:20px;
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
-    background:var(--surface-2); color:var(--ink); font:inherit; text-align:center;
+  /* static map image (self-hosted, no Google cookies); click opens Google Maps */
+  .map-static{position:relative; overflow:hidden;}
+  .map-static > a:first-child{display:block; width:100%; height:100%;}
+  .map-static picture, .map-static img{display:block; width:100%; height:100%; object-fit:cover;}
+  .map-open{
+    position:absolute; left:12px; bottom:12px; padding:7px 12px; border-radius:999px;
+    background:rgba(35,31,32,0.85); color:#FFFFFF; font-size:13px; font-weight:600;
   }
-  .map-load-title{font-size:15px; font-weight:600; color:var(--rosso);}
-  .map-load-title::before{content:"📍 ";}
-  .map-load-note{font-size:12.5px; color:var(--ink-soft);}
-  .map-load:hover .map-load-title{text-decoration:underline;}
-  .map-load:focus-visible{outline:2px solid var(--rosso); outline-offset:-4px;}
+  .map-static > a:first-child:hover .map-open{background:var(--rosso-fill);}
+  .map-static > a:first-child:focus-visible{outline:2px solid var(--rosso); outline-offset:-4px;}
+  .map-credit{
+    position:absolute; right:0; bottom:0; padding:2px 6px; font-size:10.5px;
+    background:rgba(255,255,255,0.8); color:#333333; text-decoration:none;
+  }
   .map-card-title{font-size:16px; font-weight:600; margin:0;}
   .map-card-note{font-size:12.5px; color:var(--ink-soft); margin:0;}
   .hero-note{font-size:13px; color:var(--ink-soft); margin:14px 0 0;}
