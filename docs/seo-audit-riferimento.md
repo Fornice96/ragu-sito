@@ -3,7 +3,7 @@
 Condensato dei tre audit SEO fatti finora (22, 23 e 27 settembre 2026, punteggio 62/100 → 67/100 → 84/100). Il report completo dei primi due resta nel Project "Ragu Italian Bistrot" su claude.ai (`claude/seo-audit-settembre-2026.md`); il terzo (basato sui file locali di questo repository, non ancora pushato) è salvato come PDF in `Claude outputs/Audit SEO - sito Ragu - 2026-09-27.pdf` — qui solo l'essenziale per non perdere il filo lavorando da questo repository.
 
 ## Già risolto — attenzione a non reintrodurlo per sbaglio
-- Il dominio corretto è `ragu-sito.fornice.workers.dev` (Cloudflare, dal 30/09/2026; prima `ragu-italian-bistrot.netlify.app`, dismesso, e ancora prima `dashing-dolphin-1b1c28.netlify.app`, morto) — controllare sempre og:url, og:image, twitter:image, `url`/`image` nello schema.org, sitemap.xml, robots.txt se si tocca uno di questi.
+- Il dominio corretto è `raguitalianbistro.co.uk` (dal 14/10/2026; prima `ragu-sito.fornice.workers.dev` su Cloudflare, dal 30/09/2026; prima `ragu-italian-bistrot.netlify.app`, dismesso, e ancora prima `dashing-dolphin-1b1c28.netlify.app`, morto) — controllare sempre og:url, og:image, twitter:image, `url`/`image` nello schema.org, sitemap.xml, robots.txt se si tocca uno di questi.
 - `<link rel="canonical">` deve restare su `index.html` e `privacy.html`.
 - Grafia del brand: **sempre "Bistro"**, mai "Bistrot" (decisione di Ciro, 23/09/2026) — vale per testo, meta tag, futuri contenuti. Un futuro dominio proprio va scelto con "bistro".
 - Schema.org Restaurant: `acceptsReservations` è un booleano (`true`), non una stringa `"True"`. Presenti anche `@id`, `logo`, `foundingDate`, `hasMenu` (PDF + riferimento al blocco `Menu` con gli 8 piatti in HTML), `geo`, `sameAs`.
