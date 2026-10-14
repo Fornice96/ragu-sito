@@ -35,6 +35,13 @@ Dal 30/09/2026 il sito è pubblicato da **Cloudflare** (Workers con asset static
 - `_headers` funziona come su Netlify. Cloudflare serve le pagine senza `.html` (`/privacy`, non `/privacy.html`): le regole in `_headers` e i canonical vanno scritti così.
 - Il push resta comunque da chiedere a Ciro (punto 3).
 
+## 4b. In caso di emergenza (sito rotto o irraggiungibile)
+1. **Sito rotto dopo una modifica** → la via più rapida, anche senza Claude: dashboard Cloudflare → Workers & Pages → `ragu-sito` → Distribuzioni → versione precedente → Rollback. Poi sistemare il codice con calma e ripubblicare.
+2. **Annullare una modifica nel codice** → `git revert <commit>` + push (mai `reset`/`push --force` su `main`): la storia resta intatta e il deploy parte da solo. Verificare l'esito in GitHub → Actions.
+3. **Deploy fallito** → l'errore è nelle annotazioni dell'esecuzione in Actions (leggibili anche via API pubblica). Cause già viste: token Cloudflare scaduto/revocato (rigenerarlo e aggiornare il secret `CLOUDFLARE_API_TOKEN`), token git del Mac senza permesso `workflow` quando si toccano file in `.github/`.
+4. **Sito irraggiungibile ma deploy ok** → controllare dashboard Cloudflare (dominio `raguitalianbistro.co.uk` in Workers → Domini, scadenza/rinnovo del dominio) e https://www.cloudflarestatus.com.
+5. **GitHub o il Mac persi** → backup su Google Drive di Ciro: `Il mio Drive/Documenti/Ciro/Z_Altro/Ragù - Sito web/` (ZIP del sito + `.bundle` con tutto lo storico, istruzioni in `LEGGIMI.txt`). Da rifare dopo le modifiche importanti: `git archive --format=zip --prefix=sito-web/ -o "<cartella>/ragu-sito_AAAA-MM-GG.zip" HEAD` e `git bundle create "<cartella>/ragu-sito_AAAA-MM-GG_storico-completo.bundle" --all` (la cartella Drive è sincronizzata in `~/Library/CloudStorage/GoogleDrive-ciropernice96@gmail.com/`).
+
 ## 5. Decisioni prese da tenere a mente
 - **Grafia del brand: "Bistro" ovunque** (non "Bistrot"), decisione di Ciro del 23/09/2026. Il futuro dominio proprio va scelto con "bistro", non "bistrot".
 - Orari attuali (verificare comunque con Ciro/Vincenzo prima di usarli in un contenuto pubblico, possono cambiare): aperto tutti i giorni, 12:00–20:00 lunedì–giovedì e domenica, 12:00–21:00 venerdì–sabato.
