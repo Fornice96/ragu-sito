@@ -198,6 +198,7 @@
     white-space:nowrap;
   }
   .topbar nav a:hover{color:#FFFFFF;}
+  .topbar nav a.nav-order{color:#FFFFFF; font-weight:600;}
   .topbar .call{
     flex:none; display:flex; align-items:center; gap:7px;
     background:var(--rosso-fill); color:var(--on-rosso); text-decoration:none;
@@ -214,17 +215,20 @@
     .nav-toggle{display:flex;}
   }
 
-  /* ---------- fixed mobile action bar (call + directions) ---------- */
+  /* ---------- fixed mobile action bar (call + order + directions) ---------- */
   .mobile-actionbar{display:none;}
   @media (max-width:720px){
-    body{padding-bottom:70px;}
+    body{padding-bottom:86px;}
     .mobile-actionbar{
       display:flex; gap:10px; position:fixed; left:0; right:0; bottom:0; z-index:30;
       background:var(--surface); border-top:1px solid var(--line);
       box-shadow:0 -6px 20px -10px rgba(35,31,32,0.28);
       padding:10px 14px calc(10px + env(safe-area-inset-bottom));
     }
-    .mobile-actionbar .btn{flex:1; justify-content:center;}
+    /* three actions (Call · Order · Directions): icon above the label so they fit a 360px screen */
+    .mobile-actionbar{gap:8px;}
+    .mobile-actionbar .btn{flex:1; justify-content:center; flex-direction:column; gap:3px; padding:8px 4px; font-size:13px; border-radius:14px;}
+    .mobile-actionbar .btn svg{width:18px; height:18px;}
     body:has(#cookieBar:not([hidden])) .mobile-actionbar{display:none;}
   }
 
