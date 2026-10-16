@@ -13,6 +13,7 @@
  *   9. Section heads
  *  10. Our story (+ rating card, photo gallery)
  *  11. Dining room (zig-zag) + Preston narrative panel
+ *  11b. Christmas (seasonal — remove after the holidays)
  *  12. Menu
  *  13. Find us (contact block, hours table, map card)
  *  14. Press
@@ -425,6 +426,69 @@
   .narrative-card .eyebrow{justify-content:center;}
   .narrative-card h1, .narrative-card h2{font-size:clamp(22px,3vw,29px); margin-bottom:14px;}
   .narrative-card p{color:var(--ink-soft); font-size:15px; margin:0 auto; max-width:52ch;}
+
+  /* ---------- 11b. Christmas (seasonal — remove after the holidays) ----------
+     Burgundy + gold from the printed Christmas menus. Same colours in light
+     and dark mode, so it reads as a "special" band either way. */
+  .xmas{
+    --xmas-bg:#6F1129; --xmas-gold:#E2C27A; --xmas-ink:#3B0A16; --xmas-green:#1F5A35;
+    background:var(--xmas-bg); color:#FFFFFF;
+    background-image:radial-gradient(circle at 12% 0%, rgba(226,194,122,0.16), transparent 42%),
+                     radial-gradient(circle at 92% 100%, rgba(226,194,122,0.12), transparent 40%);
+  }
+  .xmas .section-head{text-align:center;}
+  .xmas .section-head h2{color:#FFFFFF;}
+  .xmas .section-head p{color:rgba(255,255,255,0.84); margin-inline:auto;}
+  .xmas .eyebrow{color:var(--xmas-gold); justify-content:center;}
+  .xmas .eyebrow .dot{background:var(--xmas-gold);}
+  .xmas-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; align-items:stretch;}
+  @media (max-width:760px){ .xmas-grid{grid-template-columns:1fr;} }
+  .xmas-card{
+    border:1px solid rgba(226,194,122,0.55); border-radius:var(--radius); padding:26px 24px;
+    background:rgba(255,255,255,0.06); display:flex; flex-direction:column; gap:14px;
+  }
+  .xmas-card--day{background:#FFFFFF; color:#231F20; border-color:var(--xmas-gold); box-shadow:0 14px 34px -18px rgba(0,0,0,0.55);}
+  .xmas-kicker{margin:0; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:var(--xmas-gold);}
+  .xmas-card--day .xmas-kicker{color:#8A6A1F;}
+  .xmas-card h3{font-size:24px; font-weight:600;}
+  .xmas-card--day h3{color:var(--xmas-green);}
+  .xmas-prices{display:flex; flex-wrap:wrap; gap:10px 28px; padding:12px 0; border-block:1px solid rgba(226,194,122,0.35);}
+  .xmas-prices > div{display:flex; flex-direction:column;}
+  .xp-label{font-size:12.5px; opacity:.8;}
+  .xp-amount{font-size:26px; font-weight:700; line-height:1.15;}
+  .xp-per{font-size:12px; opacity:.75;}
+  .xmas-desc{margin:0; font-size:14.5px; line-height:1.6;}
+  .xmas-facts{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:6px; font-size:13.5px; line-height:1.45;}
+  .xmas-facts li{padding-left:22px; position:relative;}
+  .xmas-facts li::before{content:"✦"; position:absolute; left:2px; top:0; color:#B8913A;}
+  .xmas-card:not(.xmas-card--day) .xmas-desc{color:rgba(255,255,255,0.88);}
+  .xmas-dishes summary{cursor:pointer; font-weight:600; font-size:14px; color:var(--xmas-gold); list-style:none;}
+  .xmas-dishes summary::-webkit-details-marker{display:none;}
+  .xmas-dishes summary::before{content:"+ ";}
+  .xmas-dishes[open] summary::before{content:"− ";}
+  .xmas-card--day .xmas-dishes summary{color:#8A6A1F;}
+  .xmas-dishes h4{margin:16px 0 6px; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--xmas-gold);}
+  .xmas-card--day .xmas-dishes h4{color:#8A6A1F;}
+  .xmas-dishes ul{margin:0; padding-left:18px; font-size:13.5px; line-height:1.55;}
+  .xmas-dishes li{margin-bottom:4px;}
+  .xmas-small{font-size:12.5px; font-style:italic; margin:6px 0 0; opacity:.85;}
+  /* margin-top:auto pins the buttons to the bottom, so both cards line up */
+  .xmas-actions{display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; margin-top:auto; padding-top:4px;}
+  /* concept 1 "Bordeaux & Oro": same green buttons on both cards, like the Christmas Day menu on Instagram */
+  .xmas .btn-primary{background:var(--xmas-green); color:#FFFFFF;}
+  .xmas-pdf{font-size:14px; font-weight:600; color:var(--xmas-gold); text-decoration:none;}
+  .xmas-card--day .xmas-pdf{color:#8A6A1F;}
+  .xmas-pdf:hover, .xmas-dishes summary:hover{text-decoration:underline;}
+  .xmas-footnote{text-align:center; margin:22px auto 0; font-size:12.5px; color:rgba(255,255,255,0.75); max-width:60ch;}
+  /* entry points elsewhere on the page */
+  .xmas-flag{
+    display:inline-block; margin-bottom:14px; padding:6px 14px; border-radius:99px;
+    background:#6F1129; color:#FFFFFF; font-size:13px; font-weight:600; text-decoration:none;
+    border:1px solid #E2C27A;
+  }
+  .xmas-flag:hover{background:#861633;}
+  .topbar nav a.nav-xmas, .mobile-nav nav a.nav-xmas{color:#E2C27A;}
+
 
   /* ---------- menu list ---------- */
   .menu-list{display:flex; flex-direction:column;}
