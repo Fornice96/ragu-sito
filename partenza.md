@@ -23,5 +23,5 @@ Aggiornato il 19/10/2026. Leggilo all'inizio di una nuova sessione, poi `CLAUDE.
 
 ## Promemoria
 - Togliere la scheda Christmas Day dopo il 25/12/2026 e l'intera sezione Natale dopo il 31/01/2027.
-- Backup su Google Drive (`Documenti/Ciro/Z_Altro/Ragù - Sito web/`): ultimo del 16/10, da rifare dopo le modifiche importanti (comandi in `CLAUDE.md` §4b).
+- Backup su Google Drive (`Documenti/Ciro/Z_Altro/Ragù - Sito web/`): ultimo del 19/10 (versione `d11dccb`), da rifare dopo le modifiche importanti (comandi in `CLAUDE.md` §4b).
 - Push sempre solo dopo ok esplicito di Ciro; rispondere sempre in italiano.
