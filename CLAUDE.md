@@ -1,6 +1,8 @@
 # Ragù Italian Bistro — sito web
 
 ## Contesto
+**All'inizio di ogni sessione, se esiste `partenza.md`, leggilo e riparti da lì** (punto raggiunto, lavori paralleli, domande in attesa). Aggiornalo a fine sessione o quando si chiude una fase.
+
 Sito del ristorante italiano di Vincenzo Gaglione (chef) e Luca Scognamiglio, entrambi di Napoli — cucina napoletana autentica, aperto dal 15 marzo 2026 a 5–7 Guildhall Street, Preston (UK), PR1 3NU. Vincenzo non è tecnico: ogni proposta che lo riguarda va spiegata in modo semplice. Ciro (il proprietario di questo repository) segue la parte online/digitale del locale.
 
 Sito statico, nessun build step: HTML/CSS/JS puro. Repository su GitHub, pubblicazione automatica su Cloudflare a ogni push su `main` (vedi punto 4).
