@@ -11,6 +11,7 @@ Aggiornato il 19/10/2026. Leggilo all'inizio di una nuova sessione, poi `CLAUDE.
   - **Gift Card**: niente pagamento online, si chiama/scrive al locale; importo libero, scadenza non indicata.
   - **Mappa** = immagine fissa stile Google (`assets/map-preston.*`), niente iframe.
   - **Galleria** con 15 foto nuove (fatto da un'altra chat).
+  - **Contatore visite** Cloudflare Web Analytics (29/10, senza cookie): dati in dashboard Cloudflare → Web Analytics.
 
 ## Lavori paralleli
 - Un'altra chat sta facendo il **sito v2** in `../sito-web-v2` (hero a tutto schermo con foto che scorrono, stile romanosrestaurant.co.uk). Non toccare quella cartella da qui.
