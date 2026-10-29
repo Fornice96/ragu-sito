@@ -15,6 +15,7 @@
  *  11. Dining room (zig-zag) + Preston narrative panel
  *  11b. Christmas (seasonal — remove after the holidays)
  *  11c. Gift cards
+ *  11d. Events & catering
  *  12. Menu
  *  13. Find us (contact block, hours table, map card)
  *  14. Press
@@ -212,7 +213,8 @@
     color:#FFFFFF; cursor:pointer;
   }
   .nav-toggle svg{width:22px; height:22px;}
-  @media (max-width:720px){
+  /* 960px: below this the 7 links + "Order delivery" no longer fit beside the Call button */
+  @media (max-width:960px){
     .topbar nav{display:none;}
     .nav-toggle{display:flex;}
   }
@@ -515,6 +517,28 @@
   .gc-label{font-size:13px; letter-spacing:.22em; text-transform:uppercase; font-weight:600; color:#E2C27A;}
   .gc-foot{font-size:11px; letter-spacing:.06em; color:rgba(255,255,255,0.7);}
   .xmas-footnote a{color:#E2C27A;}
+
+  /* ---------- 11d. Events & catering (arranged by phone, no prices yet) ---------- */
+  .events{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  @media (max-width:760px){ .events{grid-template-columns:1fr;} }
+  .event-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column;
+  }
+  .event-card img{width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; display:block;}
+  .event-body{padding:20px 22px 24px;}
+  .event-body h3{font-size:19px; font-weight:600; margin-bottom:8px;}
+  .event-body p{font-size:15px; line-height:1.65; color:var(--ink-soft); margin:0;}
+  /* Six photos: 3 per row on desktop, 2 on phones */
+  .event-strip{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:24px;}
+  @media (max-width:640px){ .event-strip{grid-template-columns:repeat(2,1fr); gap:10px;} }
+  .event-strip img{
+    width:100%; height:auto; aspect-ratio:1; object-fit:cover; display:block;
+    border-radius:var(--radius); border:1px solid var(--line);
+  }
+  .events-cta{margin-top:28px;}
+  .events-cta p{font-size:15px; color:var(--ink-soft); margin:0; max-width:58ch;}
+  .zz-text a{color:var(--rosso); font-weight:600;}
 
   /* ---------- menu list ---------- */
   .menu-list{display:flex; flex-direction:column;}

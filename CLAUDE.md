@@ -57,6 +57,9 @@ Dal 30/09/2026 il sito è pubblicato da **Cloudflare** (Workers con asset static
 
 - **Gift card** (sezione `#gift-cards` in `index.html`, CSS "11c"): niente pagamento online, si chiama o si scrive al locale. Per ora importo libero e nessuna scadenza indicata; condizioni definitive da farsi dire dai titolari.
 
+- **Eventi & catering** (sezione `#events` in `index.html` dopo "The dining room", CSS "11d", voce "Events" nei due menu, una riga in `llms.txt`, dal 29/10/2026): eventi privati nel locale o catering preparato per la sede del cliente, tutto si organizza per telefono o Instagram. Niente prezzi, capienza, numero minimo di ospiti o consegna/servizio al tavolo finché i titolari non li confermano. Le foto (foto34–41) vengono da `../Foto` (buffet e piatti dello chef inviati il 28/10): alcune sono di eventi/lavori precedenti, quindi non vanno presentate come piatti del menù.
+- **Menu in alto**: sotto i 960px compare l'hamburger (prima 720px), perché con "Events" i link non stavano più accanto a "Call to book". Se si aggiunge un'altra voce, ricontrollare a 961px.
+
 ## 6. Dati duplicati — da controllare tutti insieme quando uno cambia
 Il sito non ha componenti/template condivisi (coerente col punto "nessun build step"), quindi questi dati sono copiati a mano in più file. Prima di modificarne uno, cerca TUTTE le occorrenze con un grep su `*.html` (es. `grep -rn "7922958745" *.html`) e aggiornale insieme, non fidarti di cambiarne solo una:
 - **Telefono** (`+447922958745` / `+44 7922 958745`): 12 occorrenze tra `index.html` (topbar, hero, mobile action bar, mobile nav, sezione "Find us", footer, JSON-LD `telephone`), `404.html` (CTA + footer) e `privacy.html` (sezione 1 + contatti finali).

@@ -11,6 +11,7 @@ Aggiornato il 19/10/2026. Leggilo all'inizio di una nuova sessione, poi `CLAUDE.
   - **Gift Card**: niente pagamento online, si chiama/scrive al locale; importo libero, scadenza non indicata.
   - **Mappa** = immagine fissa stile Google (`assets/map-preston.*`), niente iframe.
   - **Galleria** con 15 foto nuove (fatto da un'altra chat).
+  - **Eventi & catering** (29/10): nuova sezione `#events` con le foto del buffet e dei piatti dello chef; in galleria 2 burrate nuove (foto32–33).
   - **Contatore visite** Cloudflare Web Analytics (29/10, senza cookie): dati in dashboard Cloudflare → Web Analytics.
 
 ## Lavori paralleli
@@ -21,6 +22,7 @@ Aggiornato il 19/10/2026. Leggilo all'inizio di una nuova sessione, poi `CLAUDE.
 1. Gift card: importi liberi o tagli fissi (minimo?), scadenza, dove valgono (menù di Natale/25 dicembre, bevande, asporto, uso in più volte), come si consegna (ritiro, posta, digitale), come si paga, foto di una gift card stampata.
 2. Uber Eats: orari di consegna uguali a quelli del ristorante?
 3. Foto del locale addobbato per Natale (per la sezione Natale e per il v2).
+4. Eventi & catering: capienza per eventi privati, numero minimo di ospiti, se fanno consegna/allestimento/servizio per il catering, prezzi indicativi; quali dei piatti nelle foto (ostriche, capesante, granchio…) possono proporre.
 
 ## Promemoria
 - Togliere la scheda Christmas Day dopo il 25/12/2026 e l'intera sezione Natale dopo il 31/01/2027.
