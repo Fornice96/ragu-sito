@@ -27,7 +27,7 @@
 <header class="legal-hero wrap">
   <p class="eyebrow">Legal</p>
   <h1>Privacy <b>Policy</b></h1>
-  <p class="updated">Last updated: 13 October 2026</p>
+  <p class="updated">Last updated: 29 October 2026</p>
 </header>
 
 <main class="legal-body wrap">
@@ -47,13 +47,14 @@
       <p>This website does not currently have any booking form, newsletter sign-up or other form that asks you to submit personal data directly. If that changes in future — for example if we add an online booking form — this policy will be updated to explain exactly what is collected and why, before that feature goes live.</p>
       <p>If you contact us by phone or email, we receive whatever details you choose to share with us (for example your name, phone number, email address or reservation details), so that we can reply to you or handle your reservation. We only use that information for the purpose you contacted us for.</p>
       <p>Like virtually every website, ours also generates standard technical logs through our hosting provider (see "Hosting and other services" below) — things like IP address, browser type and pages visited. This is collected automatically for security and performance reasons, not to identify individual visitors, and we do not access or analyse it ourselves.</p>
+      <p>We also use <strong>Cloudflare Web Analytics</strong> to count visits in aggregate — for example how many people view each page, which website or app they came from (such as Google or Instagram), their country, and whether they use a phone or a computer. It does not use cookies, does not store your IP address, does not build a profile of you and does not follow you across other websites. We only ever see totals, never individual visitors.</p>
     </section>
 
     <hr>
 
     <section>
       <h2><span class="num">3</span>Cookies</h2>
-      <p>This website does not currently use any analytics, advertising or marketing cookies. The only thing stored in your browser is a small technical flag (via <code>localStorage</code>, not a tracking cookie) that remembers you've seen the cookie notice on our homepage, so it doesn't show again on every visit.</p>
+      <p>This website does not use any analytics, advertising or marketing cookies (the visit statistics described above work without cookies). The only thing stored in your browser is a small technical flag (via <code>localStorage</code>, not a tracking cookie) that remembers you've seen the cookie notice on our homepage, so it doesn't show again on every visit.</p>
       <p>If we introduce optional cookies in future — for example website analytics, to understand which pages are useful — we will update this policy first and ask for your consent through the cookie banner on the site before anything non-essential is activated. You will always be able to accept or decline.</p>
     </section>
 
@@ -61,9 +62,10 @@
 
     <section>
       <h2><span class="num">4</span>Hosting and other services</h2>
-      <p>We use a small number of external services to run this website. None of them are advertising or tracking services:</p>
+      <p>We use a small number of external services to run this website. None of them are advertising services or track you across other websites:</p>
       <ul>
         <li><strong>Cloudflare</strong> — hosts this website and automatically generates standard server logs as described above.</li>
+        <li><strong>Cloudflare Web Analytics</strong> — counts visits in aggregate, without cookies, as described in section 2. See <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare's privacy policy</a>.</li>
         <li><strong>GitHub</strong> — stores the website's source code (not personal data).</li>
         <li><strong>Google Maps</strong> — the map on our homepage is a plain image stored on this website (map data © OpenMapTiles and OpenStreetMap contributors), so viewing it shares nothing with Google. Only if you click it does Google Maps open, under <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's own privacy policy</a>.</li>
       </ul>
@@ -133,5 +135,7 @@
 
 <script src="assets/js/cookie-consent.js"></script>
 
+<!-- Cloudflare Web Analytics: cookieless visit counter (token in index/privacy/404, see CLAUDE.md §6) -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "c8ea8a67d6944290bbb794f9f16e2b7d"}'></script>
 </body>
 </html>
